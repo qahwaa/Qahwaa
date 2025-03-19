@@ -76,15 +76,5 @@ document.addEventListener("DOMContentLoaded", function () {
             changeImage(this, direction);
         });
     });
-     // وظيفة لتبديل حالة القائمة
-     function toggleMenu() {
-        const navbar = document.querySelector('.navigation');
-        navbar.classList.toggle('active');
-    }
     
-    // استخدام الكود في الحدث عند الضغط على زر الهامبورغر
-    const hamburgerMenu = document.querySelector('.hamburger-menu');
-    if (hamburgerMenu) {
-        hamburgerMenu.addEventListener('click', toggleMenu);
-    }
 });
