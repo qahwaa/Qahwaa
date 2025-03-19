@@ -521,3 +521,80 @@ body {
     margin-bottom: 50px;
 }
 
+/* أجهزة الجوال والأجهزة اللوحية */
+@media (max-width: 768px) {
+    /* تحسين تصميم الشريط العلوي */
+    .logo {
+        font-size: 24px;
+    }
+    
+    .hamburger-menu {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+}
+/* ظهور زر الهامبورغر */
+.hamburger-menu {
+    display: block;
+}
+
+
+
+    /* تغيير تصميم القائمة */
+    .navigation ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+    }
+
+    .navigation.active ul {
+        display: flex;
+    }
+
+    .navigation ul li {
+        padding: 10px;
+    }
+
+    /* تحسين زر إتمام الشراء */
+    .main-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .product {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .footer-text, .social-icons {
+        text-align: center;
+    }
+}
+
+/* الأجهزة ذات الشاشات الصغيرة جداً مثل الهواتف */
+@media (max-width: 480px) {
+    /* تغيير حجم النصوص */
+    h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .product {
+        padding: 10px;
+    }
+
+    .add-to-cart {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+}

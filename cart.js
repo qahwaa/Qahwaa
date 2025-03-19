@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // إرسال الطلب عبر واتساب
+    // إرسال الطلب إلى بوت التليجرام
     document.getElementById("submit-order").addEventListener("click", function () {
         if (cart.length === 0) {
             alert("🚫 سلة التسوق فارغة! الرجاء إضافة منتجات قبل تقديم الطلب.");
@@ -96,26 +96,47 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         orderDetails += `\n\n💰 *التكلفة الإجمالية:* ${totalCostElement.textContent}`;
 
-        let whatsappNumber = "201012207852"; // رقم الواتساب
-        let whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderDetails)}`;
-        window.open(whatsappURL, "_blank");
+        // بيانات بوت التليجرام
+        let telegramBotToken = "8018297376:AAFfMQKUgCxxC_iMjtCjEGktvw4dga37GSw"; // ضع توكن البوت هنا
+        let chatId = "7518373914" ; // ضع معرف الدردشة الخاص بك هنا
+
+        let telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(orderDetails)}&parse_mode=Markdown`;
+
+        // إرسال الطلب إلى تليجرام
+        fetch(telegramUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert("✅ تم إرسال الطلب بنجاح إلى البوت!");
+                    localStorage.removeItem("cart");
+                    cart = [];
+                    renderCart();
+                    calculateTotal();
+                } else {
+                    alert("❌ حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى.");
+                }
+            })
+            .catch(error => {
+                alert("❌ فشل الاتصال بالبوت. تأكد من صحة التوكن و معرف الدردشة.");
+                console.error("Error:", error);
+            });
     });
 
-    // زر استكمال الشراء - التأكد من عدم إضافته مرتين
+    // زر استكمال الشراء
     if (!document.querySelector(".continue-shopping")) {
         const continueShoppingBtn = document.createElement("button");
         continueShoppingBtn.textContent = "🛍️ استكمال الشراء";
         continueShoppingBtn.className = "continue-shopping";
         continueShoppingBtn.style = "margin-top: 15px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: 0.3s;";
-        
+
         continueShoppingBtn.addEventListener("mouseover", function() {
             continueShoppingBtn.style.backgroundColor = "#0056b3";
         });
-        
+
         continueShoppingBtn.addEventListener("mouseout", function() {
             continueShoppingBtn.style.backgroundColor = "#007bff";
         });
-        
+
         continueShoppingBtn.addEventListener("click", function () {
             window.location.href = "index.html"; // غير هذا الرابط حسب صفحة المنتجات
         });

@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const productName = product.querySelector("h3")?.innerText || "غير معروف";
             const productImage = product.querySelector(".image-container img")?.src || "";
-
             const sizeSelect = product.querySelector("select[name='size']");
             const colorSelect = product.querySelector("select[name='color']");
             const productSize = sizeSelect ? sizeSelect.value : "Default";
@@ -23,16 +22,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             console.log("🛒 إضافة المنتج: ", productName, productSize, productColor);
 
-            const item = {
-                name: productName,
-                image: productImage,
-                size: productSize,
-                color: productColor
-            };
+            // التأكد من عدم إدخال NaN في الكمية
+            let existingItem = cart.find(item => item.name === productName && item.size === productSize && item.color === productColor);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    image: productImage,
+                    size: productSize,
+                    color: productColor,
+                    quantity: 1 // الحد الأدنى للطلب عنصر واحد
+                });
+            }
 
-            cart.push(item);
             localStorage.setItem("cart", JSON.stringify(cart));
-
             updateCartCount();
             alert("✅ تمت إضافة المنتج إلى السلة!");
         });
@@ -41,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateCartCount() {
         const cartCountElement = document.getElementById("cart-count");
         if (cartCountElement) {
-            cartCountElement.textContent = cart.length;
+            cartCountElement.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
         } else {
             console.warn("⚠️ لم يتم العثور على عنصر cart-count!");
         }
@@ -56,29 +60,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!img) return;
 
-        // استخراج قائمة الصور المخزنة في `data-images`
         let imageList = img.getAttribute("data-images").split(",").map(img => img.trim());
-
-        // استخراج اسم الصورة الحالي (بدون المسار الكامل)
-        let currentSrc = img.src.split("/").pop(); 
-
-        // إيجاد الفهرس الحالي للصورة
+        let currentSrc = img.src.split("/").pop();
         let currentIndex = imageList.findIndex(image => image.includes(currentSrc));
 
-        if (currentIndex === -1) currentIndex = 0; // إذا لم يتم العثور على الصورة
+        if (currentIndex === -1) currentIndex = 0;
 
-        // حساب الفهرس الجديد
         let newIndex = (currentIndex + direction + imageList.length) % imageList.length;
-
-        // تحديث الصورة مع المسار الكامل
-        img.src = imageList[newIndex]; 
+        img.src = imageList[newIndex];
     }
 
-    // إضافة الأحداث إلى أزرار التنقل بين الصور
     document.querySelectorAll(".prev, .next").forEach(button => {
         button.addEventListener("click", function () {
             let direction = this.classList.contains("prev") ? -1 : 1;
             changeImage(this, direction);
         });
     });
+     // وظيفة لتبديل حالة القائمة
+     function toggleMenu() {
+        const navbar = document.querySelector('.navigation');
+        navbar.classList.toggle('active');
+    }
+    
+    // استخدام الكود في الحدث عند الضغط على زر الهامبورغر
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', toggleMenu);
+    }
 });

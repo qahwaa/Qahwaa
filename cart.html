@@ -31,7 +31,7 @@
             </table>
             <p id="total-cost">Total Cost: <span id="cost-value">0</span> LE (Shipping: 60 LE)</p>
             <button class="clear-cart">Clear Cart</button>
-            <button class="continue-shopping" onclick="window.location.href='index.html'">🛍️ continue shopping</button>
+            <button class="continue-shopping" onclick="window.location.href='index.html'">🛍️ Continue Shopping</button>
         </div>
     </section>
 
@@ -66,7 +66,129 @@
         </table>
     </section>
 
-    <script src="cart.js"></script>
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cartItemsContainer = document.getElementById("cart-items");
+            const totalCostElement = document.getElementById("cost-value");
 
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            function calculateTotal() {
+                let total = cart.reduce((sum, item) => sum + (400 * Math.max(1, item.quantity)), 60);
+                totalCostElement.textContent = total + " LE";
+            }
+
+            function renderCart() {
+                cartItemsContainer.innerHTML = "";
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = `<tr><td colspan="6">🛒 سلة التسوق فارغة</td></tr>`;
+                    totalCostElement.textContent = "60 LE";
+                    return;
+                }
+
+                cart.forEach((item, index) => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td><img src="${item.image}" width="50"></td>
+                        <td>${item.name}</td>
+                        <td>${item.size}</td>
+                        <td>${item.color}</td>
+                        <td>
+                            <select class="quantity" data-index="${index}">
+                                ${[1, 2, 3, 4, 5].map(q => `<option value="${q}" ${q == item.quantity ? "selected" : ""}>${q}</option>`).join("")}
+                            </select>
+                        </td>
+                        <td><button class="remove-item" data-index="${index}">❌</button></td>
+                    `;
+                    cartItemsContainer.appendChild(row);
+                });
+
+                document.querySelectorAll(".quantity").forEach(select => {
+                    select.addEventListener("change", function () {
+                        const index = this.getAttribute("data-index");
+                        cart[index].quantity = Math.max(1, parseInt(this.value));
+                        localStorage.setItem("cart", JSON.stringify(cart));
+                        calculateTotal();
+                        renderCart();
+                    });
+                });
+
+                document.querySelectorAll(".remove-item").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const index = this.getAttribute("data-index");
+                        cart.splice(index, 1);
+                        localStorage.setItem("cart", JSON.stringify(cart));
+                        renderCart();
+                        calculateTotal();
+                    });
+                });
+
+                calculateTotal();
+            }
+
+            document.querySelector(".clear-cart").addEventListener("click", function () {
+                if (confirm("هل أنت متأكد أنك تريد مسح السلة بالكامل؟")) {
+                    localStorage.removeItem("cart");
+                    cart = [];
+                    renderCart();
+                    calculateTotal();
+                }
+            });
+
+            renderCart();
+        });
+
+        document.getElementById("submit-order").addEventListener("click", function () {
+            const fullName = document.getElementById("full-name").value.trim();
+            const phoneNumber = document.getElementById("phone-number").value.trim();
+            const altPhone = document.getElementById("alt-phone").value.trim();
+            const fullAddress = document.getElementById("full-address").value.trim();
+            const notes = document.getElementById("notes").value.trim();
+            const costValue = document.getElementById("cost-value").innerText;
+
+            let cartItems = [];
+            document.querySelectorAll("#cart-items tr").forEach(row => {
+                let product = row.cells[1]?.innerText || "";
+                let size = row.cells[2]?.innerText || "";
+                let color = row.cells[3]?.innerText || "";
+                let quantity = row.cells[4]?.querySelector("select")?.value || "1";
+                cartItems.push(`- ${product} | Size: ${size} | Color: ${color} | Quantity: ${quantity}`);
+            });
+
+            if (!fullName || !phoneNumber || !fullAddress || cartItems.length === 0) {
+                alert("⚠️ الرجاء ملء جميع الحقول المطلوبة وإضافة منتج واحد على الأقل.");
+                return;
+            }
+
+            const message = `📌 *طلب جديد* 🚀\n👤 *الاسم:* ${fullName}\n📞 *رقم الهاتف:* ${phoneNumber}\n📞 *هاتف إضافي:* ${altPhone}\n🏡 *العنوان:* ${fullAddress}\n📝 *ملاحظات:* ${notes}\n💰 *التكلفة النهائية:* ${costValue} LE\n🛍️ *المشتريات:*\n${cartItems.join("\n")}`;
+
+            const botToken = "8018297376:AAFfMQKUgCxxC_iMjtCjEGktvw4dga37GSw";
+            const chatId = "7518373914";
+
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: "Markdown"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert("✅ تم إرسال الطلب بنجاح!");
+                    localStorage.removeItem("cart");
+                    location.reload();
+                } else {
+                    alert("❌ فشل إرسال الطلب.");
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("❌ حدث خطأ أثناء إرسال الطلب.");
+            });
+        });
+    </script>
+</body>
 </html>
