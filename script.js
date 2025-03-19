@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // تحميل بيانات السلة من localStorage
+    // ========================== تنبيه عند استخدام الوضع الرأسي ==========================
+    if (window.matchMedia("(orientation: portrait)").matches) {
+        alert("يفضل استخدام الموقع في الوضع الأفقي للحصول على أفضل تجربة. يرجى تدوير جهازك.");
+    }
+
+    // ========================== تحميل بيانات السلة من localStorage ==========================
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -76,5 +81,4 @@ document.addEventListener("DOMContentLoaded", function () {
             changeImage(this, direction);
         });
     });
-    
 });

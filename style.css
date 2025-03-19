@@ -487,22 +487,21 @@ th, td {
     transform: scale(0.95) !important; /* تقليل الحجم لمحاكاة الضغط */
 }
 
-/* زر استكمال الشراء */
-.footer {
-    width: 100%;
-    background-color: #160701; /* لون الخلفية */
-    color: white;
-    padding: 10px 20px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    font-size: 14px;
-    display: flex;
-    justify-content: space-between; /* توزيع العناصر بين اليمين والشمال */
-    align-items: center;
+
+.content {
+    flex: 1; /* يجعل المحتوى يتمدد ليملأ الفراغ فوق الفوتر */
 }
 
+.footer {
+    width: 100%;
+    background-color: #160701;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .footer-text {
     display: flex;
     align-items: center;
