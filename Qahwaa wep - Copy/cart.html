@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <a href="index.html" class="logo">Qahwaa - قـهـوة</a>
+    </header>
+
+    <section class="cart-section">
+        <h2 class="title cart-title">🛒 Shopping Cart</h2>
+        <div class="cart-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Product</th>
+                        <th>Size</th>
+                        <th>Color</th>
+                        <th>Quantity</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items"></tbody>
+            </table>
+            <p id="total-cost">Total Cost: <span id="cost-value">0</span> LE (Shipping: 60 LE)</p>
+            <button class="clear-cart">Clear Cart</button>
+            <button class="continue-shopping" onclick="window.location.href='index.html'">🛍️ continue shopping</button>
+        </div>
+    </section>
+
+    <section class="order-section">
+        <h2 class="title">📋 Enter Your Details</h2>
+        <table class="order-table">
+            <tr>
+                <td>Full Name:</td>
+                <td><input type="text" id="full-name"></td>
+            </tr>
+            <tr>
+                <td>Phone Number:</td>
+                <td><input type="text" id="phone-number"></td>
+            </tr>
+            <tr>
+                <td>Alternate Phone:</td>
+                <td><input type="text" id="alt-phone"></td>
+            </tr>
+            <tr>
+                <td>Full Address:</td>
+                <td><textarea id="full-address"></textarea></td>
+            </tr>
+            <tr>
+                <td>Notes:</td>
+                <td><textarea id="notes"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button id="submit-order" class="submit-btn">Submit Order</button>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <script src="cart.js"></script>
+</body>
+
+</html>
