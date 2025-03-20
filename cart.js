@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // بيانات بوت التليجرام
         let telegramBotToken = "8018297376:AAFfMQKUgCxxC_iMjtCjEGktvw4dga37GSw"; // ضع توكن البوت هنا
-        let chatId = "7518373914" ; // ضع معرف الدردشة الخاص بك هنا
+        let chatId = "-1002645802522" ; // ضع معرف الدردشة الخاص بك هنا
 
         let telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(orderDetails)}&parse_mode=Markdown`;
 
