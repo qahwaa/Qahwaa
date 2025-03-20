@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // حساب التكلفة الإجمالية
     function calculateTotal() {
-        let total = cart.reduce((sum, item) => sum + (400 * item.quantity), 80);
+        let total = cart.reduce((sum, item) => sum + (400 * item.quantity), 60);
         totalCostElement.textContent = total + " LE";
     }
 
