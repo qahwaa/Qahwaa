@@ -169,3 +169,34 @@ input, textarea {
 .continue-shopping i {
     font-size: 20px;
 }
+
+.home-bu {
+    display: block;  /* جعله في سطر منفصل */
+    width: fit-content; /* يناسب المحتوى */
+    margin: 20px auto; /* وسط الصفحة مع مسافة مناسبة */
+    background: linear-gradient(45deg, #b3b000, #806801);
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px; /* شكل دائري جميل */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* إزالة الخط تحت النص */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.home-bu:hover {
+    background: linear-gradient(45deg, #b3b000, #806801);
+    transform: scale(1.08);
+}
+
+.home-bu:active {
+    background: #774700;
+    transform: scale(0.95);
+}
+

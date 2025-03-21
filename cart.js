@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const cartItemsContainer = document.getElementById("cart-items");
     const totalCostElement = document.getElementById("cost-value");
+    const cartCountElement = document.getElementById("cart-count"); // عنصر عرض العدد في شريط التنقل
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     // التأكد من صحة الكميات
@@ -9,6 +10,12 @@ document.addEventListener("DOMContentLoaded", function () {
         quantity: item.quantity > 0 ? item.quantity : 1
     }));
     localStorage.setItem("cart", JSON.stringify(cart));
+
+    // تحديث عدد المنتجات في العربة
+    function updateCartCount() {
+        let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCountElement.textContent = `(${totalItems})`; // تحديث العدد بجوار أيقونة السلة
+    }
 
     // حساب التكلفة الإجمالية
     function calculateTotal() {
@@ -44,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cart[index].quantity = parseInt(this.value);
                 localStorage.setItem("cart", JSON.stringify(cart));
                 calculateTotal();
+                updateCartCount();
                 renderCart();
             });
         });
@@ -56,10 +64,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("cart", JSON.stringify(cart));
                 renderCart();
                 calculateTotal();
+                updateCartCount();
             });
         });
 
         calculateTotal();
+        updateCartCount();
     }
 
     // تفريغ السلة بالكامل
@@ -69,6 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
             cart = [];
             renderCart();
             calculateTotal();
+            updateCartCount();
         }
     });
 
@@ -99,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // بيانات بوت التليجرام
         let telegramBotToken = "8018297376:AAFfMQKUgCxxC_iMjtCjEGktvw4dga37GSw"; // ضع توكن البوت هنا
         let chatId = "-1002645802522" ; // ضع معرف الدردشة الخاص بك هنا
-
+        
         let telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(orderDetails)}&parse_mode=Markdown`;
 
         // إرسال الطلب إلى تليجرام
@@ -112,6 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     cart = [];
                     renderCart();
                     calculateTotal();
+                    updateCartCount();
                 } else {
                     alert("❌ حدث خطأ أثناء إرسال الطلب، يرجى المحاولة مرة أخرى.");
                 }
