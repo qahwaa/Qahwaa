@@ -4,6 +4,22 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("يفضل استخدام الموقع في الوضع الأفقي للحصول على أفضل تجربة. يرجى تدوير جهازك.");
     }
 
+    // ========================== زر الهامبرغر (القائمة الجانبية) ==========================
+    const hamburger = document.createElement("div");
+    hamburger.classList.add("hamburger");
+    hamburger.innerHTML = "&#9776;"; // أيقونة الهامبرغر (3 خطوط)
+
+    const header = document.querySelector("header");
+    const nav = document.querySelector(".navigation");
+
+    if (header && nav) {
+        header.insertBefore(hamburger, nav); // إضافة الزر قبل القائمة
+
+        hamburger.addEventListener("click", function () {
+            nav.classList.toggle("active"); // إظهار أو إخفاء القائمة
+        });
+    }
+
     // ========================== تحميل بيانات السلة من localStorage ==========================
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -27,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             console.log("🛒 إضافة المنتج: ", productName, productSize, productColor);
 
-            // التأكد من عدم إدخال NaN في الكمية
             let existingItem = cart.find(item => item.name === productName && item.size === productSize && item.color === productColor);
             if (existingItem) {
                 existingItem.quantity += 1;
@@ -37,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     image: productImage,
                     size: productSize,
                     color: productColor,
-                    quantity: 1 // الحد الأدنى للطلب عنصر واحد
+                    quantity: 1
                 });
             }
 
