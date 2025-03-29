@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dive In space</title>
+    <link rel="stylesheet" href="about1.css">
+</head>
+<body>
+    <header>
+        <h3>Dive In space</h3>
+    </header>
+
+    <section class="product-details">
+        <!-- سلايدر الصور -->
+        <div class="slider">
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <img id="productImage" src="img/ff22.jpg" alt="Dive In space">
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+
+        <!-- تفاصيل المنتج -->
+        <h2>Product Details</h2>
+        <p>Dive In space T-shirt made of high-quality materials and very comfortable</p>
+        <p>Price: 399 L.E</p>
+
+        <div class="options">
+            <!-- ✅ اختيار المقاس -->
+            <div class="option-group">
+                <label for="size">Size:</label>
+                <select id="size">
+                    <option>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                </select>
+            </div>
+        
+            <!-- ✅ اختيار اللون -->
+            <div class="option-group">
+                <label for="color">Color:</label>
+                <select id="color">
+                    <option>White</option>
+                    <option>Black</option>
+                </select>
+            </div>
+        
+            <!-- ✅ اختيار الكمية -->
+            <div class="option-group">
+                <label for="quantity">Quantity:</label>
+                <select id="quantity">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- زر الشراء -->
+        <button class="add-to-cart" onclick="addToCart()">Add to Cart</button>
+
+        <!-- زر الذهاب إلى السلة -->
+        <a href="cart.html" class="go-to-cart">Go to Cart</a>
+    </section>
+
+    <!-- زر العودة للمتجر -->
+    <div class="back-button-container">
+        <a href="pro.html" class="back-button">Continue Shopping</a>
+    </div>
+
+    <script>
+        let images = ["img/ff22.jpg", "img/ffb.jpg", "img/basic.jpg"];
+        let index = 0;
+
+        function nextSlide() {
+            index = (index + 1) % images.length;
+            document.getElementById("productImage").src = images[index];
+        }
+
+        function prevSlide() {
+            index = (index - 1 + images.length) % images.length;
+            document.getElementById("productImage").src = images[index];
+        }
+
+        function addToCart() {
+            let size = document.getElementById("size").value;
+            let color = document.getElementById("color").value;
+            let quantity = document.getElementById("quantity").value;
+
+            let product = {
+                name: "Dive In space",
+                price: 399,
+                size: size,
+                color: color,
+                quantity: quantity,
+                image: images[0] // أول صورة كصورة المنتج الرئيسية
+            };
+
+            // جلب المنتجات من localStorage
+            let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+
+            // إضافة المنتج الجديد
+            cart.push(product);
+
+            // حفظ البيانات في localStorage
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            alert("✅ تمت إضافة المنتج إلى السلة!");
+        }
+    </script>
+</body>
+</html>

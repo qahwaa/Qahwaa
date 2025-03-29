@@ -1,0 +1,159 @@
+/* ✅ إعدادات الصفحة الأساسية */
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* ✅ شريط العنوان */
+header {
+    background: #8a4b08;
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* ✅ تحسين تصميم سلايدر الصور */
+.slider {
+    position: relative;
+    max-width: 100%;
+    width: 400px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slider img {
+    width: 100%;
+    border-radius: 10px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.slider button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.slider button:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* ✅ تحسين تصميم تفاصيل المنتج */
+.product-details {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.product-details h2 {
+    font-size: 22px;
+    color: #333;
+}
+
+.product-details p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* ✅ تحسين اختيار المقاس واللون والكمية */
+.options {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column; /* جعل الخيارات تحت بعضها */
+    align-items: center;
+}
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px; /* مسافة بين كل خيار */
+}
+
+.option-group label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px; /* مسافة بين التسمية و القائمة المنسدلة */
+}
+
+.option-group select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 120px;
+    text-align: center;
+}
+
+/* ✅ تحسين الأزرار */
+.add-to-cart, .go-to-cart, .back-button {
+    display: block;
+    margin: 10px auto;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background: #8a4b08;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.add-to-cart:hover, .go-to-cart:hover, .back-button:hover {
+    background: #aa7709;
+    transform: scale(1.05);
+}
+
+/* ✅ تحسين التجاوب مع الأجهزة الصغيرة */
+@media (max-width: 480px) {
+    .product-details {
+        max-width: 95%;
+        padding: 15px;
+    }
+
+    .slider {
+        max-width: 95%;
+    }
+
+    .slider button {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .add-to-cart, .go-to-cart, .back-button {
+        width: 90%;
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .option-group select {
+        width: 100px; /* تقليل عرض القوائم المنسدلة */
+    }
+}

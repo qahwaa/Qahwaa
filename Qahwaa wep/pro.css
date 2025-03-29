@@ -1,0 +1,149 @@
+/* إعدادات الصفحة الأساسية */
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+
+/* شريط العنوان */
+header {
+    background: #834e00;
+    color: white;
+    padding: 15px;
+    font-size: 24px;
+}
+
+/* ✅ تنسيق الأزرار العلوية */
+.top-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-bottom: 2px solid #ddd;
+}
+
+.nav-button {
+    background-color: #684003;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.nav-button:hover {
+    background-color: #aa7709;
+    transform: scale(1.05);
+}
+
+/* تصميم المنتجات */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+/* زر الشراء */
+button {
+    background: #684003;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button:hover {
+    background: #aa7709;
+}
+
+/* تحسين التوافق مع الأجهزة الصغيرة */
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 10px;
+    }
+    
+    header {
+        font-size: 20px;
+    }
+
+    .product {
+        padding: 10px;
+    }
+
+    .about-button {
+        padding: 8px;
+    }
+
+    .nav-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+}
+
+/* تحسين التوافق مع الهواتف الصغيرة جدًا */
+@media (max-width: 480px) {
+    .products {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    header {
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .about-button {
+        font-size: 14px;
+        padding: 7px;
+    }
+
+    .nav-button {
+        padding: 7px 12px;
+        font-size: 13px;
+    }
+}
+
+/* زر الـ "About" */
+.about-button {
+    display: inline-block;
+    background: #805403;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+.about-button:hover {
+    background: #a37903;
+    transform: scale(1.05);
+}

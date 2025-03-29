@@ -1,0 +1,641 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+    font-family: 'poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+header {
+    background-color: rgb(129, 50, 13);
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 200px;
+}
+.logo{
+    color: rgb(250, 208, 183);
+    text-decoration: none;
+    font-size: 1.8em;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation a{
+    color: rgb(224, 224, 224);
+    font-weight: 500;
+    font-size: 1.1em;
+    text-decoration: none;
+    padding-left: 30px;
+}
+
+.navigation a:hover{
+    color: rgb(67, 192, 105);
+}
+
+section{
+    padding: 70px 150px;
+
+}
+
+/* زر الهامبرغر */
+.hamburger {
+    display: none; /* إخفاؤه في الوضع العادي */
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+/* تعديل القائمة للأجهزة الصغيرة */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        z-index: 1000;
+    }
+
+    .navigation {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 60%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding-top: 60px;
+        transition: 0.3s ease-in-out;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .navigation a {
+        font-size: 1.5em;
+        display: block;
+        padding: 15px;
+    }
+
+    /* عندما يتم فتح القائمة */
+    .navigation.active {
+        left: 0;
+    }
+}
+
+
+.main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background: url(img/tree.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* إضافة طبقة مموهة فوق الخلفية */
+.main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* لون شفاف غامق لتحسين الوضوح */
+    backdrop-filter: blur(4px); /* تأثير التمويه */
+    -webkit-backdrop-filter: blur(8px); /* دعم لمتصفحات WebKit */
+    z-index: 0; /* يكون تحت النصوص */
+}
+
+/* جعل المحتوى فوق الطبقة */
+.main * {
+    position: relative;
+    z-index: 1;
+}
+
+
+.main h2{
+    font-size: 1.4em;
+    color: rgb(202, 241, 247);
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.main h2 span {
+    color: rgb(209, 121, 38);
+    font-size: 3em;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.main h3{
+    font-size: 2.1em;
+        background: linear-gradient(to right, #eba563, #d36b17, #f76826);
+        -webkit-background-clip : text;
+        -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    box-shadow: #160701;
+}
+
+.main-btn{
+    font-size: 1.1em;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    line-height: 1.8em;
+    background-color: rgb(114, 60, 10);
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.9375em 2.1875em;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    transition: 0.7s ease;
+}
+
+.main-btn:hover{
+    background-color: rgb(187, 107, 33);
+    transform: scale(1.1);
+}
+
+.social-icons a {
+    color: rgb(255, 255, 255);
+    font-size: 1.7em;
+    padding-right: 30px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    font-size: 2.2em;
+    color: rgb(126, 50, 0);
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card{
+    width: 21.25em;
+    margin: 20px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+    overflow: hidden;
+    transition: 0.7s ease;
+    padding: 25px;
+}
+
+.card:hover{
+    transform: scale(1.1);
+}
+
+.icon {
+    font-size: 8em;
+    color: rgb(126, 50, 0);
+    text-align: center;
+}
+.info{
+    text-align: center;
+}
+
+.info h3{
+    color: rgb(126, 50, 0);
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 10px;
+}
+
+
+
+
+.products {
+    padding: 80px 150px;
+    text-align: center;
+}
+
+.products .title {
+    font-size: 2.5em;
+    color: rgb(126, 50, 0);
+    font-weight: 800;
+    margin-bottom: 40px;
+}
+
+.products .content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* ✅ جعل الكارت بالكامل مربع */
+.product {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    height: 100%; /* يجعل الكارت يأخذ حجم الصورة */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.4s ease-in-out;
+    text-align: center;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+}
+
+/* ✅ جعل الصورة مربعة تمامًا */
+.image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* ✅ يضمن أن الصورة تكون مربعة تلقائيًا */
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f7f7;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ✅ يجعل الصورة تملأ المربع بالكامل */
+}
+
+.product h3 {
+    font-size: 1.4em;
+    color: rgb(126, 50, 0);
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.product p {
+    font-size: 0.95em;
+    color: rgb(80, 80, 80);
+    margin-bottom: 10px;
+}
+
+/* Dropdown Styling */
+.product label {
+    display: block;
+    font-weight: 600;
+    margin: 10px 0 5px;
+}
+
+.product select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* Add to Cart Button */
+.add-to-cart {
+    background-color: rgb(114, 60, 10);
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.4s;
+    width: 100%;
+}
+
+.add-to-cart:hover {
+    background-color: rgb(187, 107, 33);
+}
+
+/* ✅ تحسين العرض على الهواتف المحمولة */
+@media (max-width: 768px) {
+    .products {
+        padding: 50px 20px;
+    }
+
+    .products .title {
+        font-size: 2em;
+    }
+
+    .products .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .image-container {
+        aspect-ratio: 1 / 1; /* يضمن أن الصورة تبقى مربعة حتى في الشاشات الصغيرة */
+    }
+
+    .product h3 {
+        font-size: 1.2em;
+    }
+
+    .add-to-cart {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+}
+
+/* ======= Responsive Design ======= */
+@media (max-width: 1024px) {
+    header {
+        padding: 10px 50px;
+    }
+
+    section {
+        padding: 50px;
+    }
+
+    .products .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .navigation ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .main {
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .main h2 span {
+        font-size: 2.5em;
+    }
+
+    .products .content {
+        gap: 15px;
+    }
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-container .images {
+    display: flex;
+    width: 300%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-container img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+/* إخفاء أزرار الـ radio */
+input[type="radio"] {
+    display: none;
+}
+
+/* تحريك الصور عند اختيار كل زر */
+#img1-1:checked ~ .images {
+    transform: translateX(0%);
+}
+
+#img1-2:checked ~ .images {
+    transform: translateX(-33.33%);
+}
+
+#img1-3:checked ~ .images {
+    transform: translateX(-66.66%);
+}
+
+/* تحسين تصميم أزرار التبديل بين الصور */
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* أزرار تغيير الصور */
+.image-container .prev,
+.image-container .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.image-container .prev {
+    left: 10px;
+}
+
+.image-container .next {
+    right: 10px;
+}
+
+.image-container .prev:hover,
+.image-container .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.cart-section {
+    padding: 50px;
+    text-align: center;
+}
+
+.cart-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+.clear-cart {
+    margin-top: 20px;
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+/* زر استكمال الشراء - تصميم عصري */
+.continue-shopping {
+    display: block;  /* جعله في سطر منفصل */
+    width: fit-content; /* يناسب المحتوى */
+    margin: 20px auto; /* وسط الصفحة مع مسافة مناسبة */
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px; /* شكل دائري جميل */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* إزالة الخط تحت النص */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.continue-shopping:hover {
+    background: linear-gradient(45deg, #0056b3, #00408d);
+    transform: scale(1.08);
+}
+
+.continue-shopping:active {
+    background: #003377;
+    transform: scale(0.95);
+}
+
+.continue-shopping i {
+    font-size: 20px;
+}
+
+/* زر تأكيد الطلب - ستايل جديد */
+.submit-order {
+    background-color: #ff4d4d !important; /* لون أحمر جذاب */
+    color: white !important; /* لون النص */
+    font-size: 16px !important;
+    font-weight: bold !important;
+    padding: 12px 20px !important;
+    border: none !important;
+    border-radius: 8px !important; /* حواف دائرية */
+    cursor: pointer !important;
+    transition: all 0.3s ease-in-out !important;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2) !important;
+    margin-top: 15px;
+}
+
+.submit-order:hover {
+    background-color: #e60000 !important; /* لون أغمق عند التحويل */
+    transform: scale(1.1) !important; /* تكبير بسيط */
+}
+
+.submit-order:active {
+    background-color: #cc0000 !important; /* لون داكن عند الضغط */
+    transform: scale(0.95) !important; /* تقليل الحجم لمحاكاة الضغط */
+}
+
+
+.content {
+    flex: 1; /* يجعل المحتوى يتمدد ليملأ الفراغ فوق الفوتر */
+}
+
+.footer {
+    width: 100%;
+    background-color: #160701;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-text {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* مسافة بين النصوص */
+}
+
+.footer-title a {
+    color: #f0e68c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* منع تداخل الفوتر مع المحتوى */
+body {
+    margin-bottom: 50px;
+}
+
+
