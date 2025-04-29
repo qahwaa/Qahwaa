@@ -27,7 +27,7 @@ header {
 }
 
 .nav-button {
-    background-color: #684003;
+    background-color: #3588e7;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -37,10 +37,37 @@ header {
 }
 
 .nav-button:hover {
-    background-color: #aa7709;
+    background-color: #e23618;
     transform: scale(1.05);
 }
 
+
+.sale-badge {
+    position: center;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 10;
+    display: block;}
+
+
+    .discount-tag {
+        background-color: red;
+        color: white;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 3px 8px;
+        margin-left: 10px;
+        border-radius: 5px;
+        vertical-align: middle;
+    }
+    
+    
 /* تصميم المنتجات */
 .products {
     display: grid;

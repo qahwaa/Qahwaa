@@ -11,8 +11,8 @@ bot.on("message", (ctx) => {
     const fromChatId = ctx.message.chat.id;
 
     ctx.telegram.forwardMessage(FORWARD_CHAT_ID, fromChatId, messageId)
-        .then(() => console.log("✅ تم إعادة توجيه الرسالة!"))
-        .catch(err => console.error("❌ خطأ في إعادة التوجيه:", err));
+        .then(() => console.log("✅ Order forwarded successfully!"))
+        .catch(err => console.error("❌ Error forwarding order:", err));
 });
 
 bot.launch();
