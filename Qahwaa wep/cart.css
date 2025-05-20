@@ -48,6 +48,8 @@ th {
     border-radius: 5px;
 }
 
+
+
 /* زر مسح السلة */
 .clear-cart {
     background: red;
@@ -65,6 +67,8 @@ th {
     background-color: darkred;
     transform: scale(1.05);
 }
+
+
 
 .home-page {
     background: red;
@@ -129,30 +133,6 @@ input, textarea {
     border: 1px solid #ddd;
 }
 
-/* زر تأكيد الطلب - ستايل جديد */
-.submit-order {
-    background-color: #ff4d4d !important; /* لون أحمر جذاب */
-    color: white !important; /* لون النص */
-    font-size: 16px !important;
-    font-weight: bold !important;
-    padding: 12px 20px !important;
-    border: none !important;
-    border-radius: 8px !important; /* حواف دائرية */
-    cursor: pointer !important;
-    transition: all 0.3s ease-in-out !important;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2) !important;
-    margin-top: 15px;
-}
-
-.submit-order:hover {
-    background-color: #e60000 !important; /* لون أغمق عند التحويل */
-    transform: scale(1.1) !important; /* تكبير بسيط */
-}
-
-.submit-order:active {
-    background-color: #cc0000 !important; /* لون داكن عند الضغط */
-    transform: scale(0.95) !important; /* تقليل الحجم لمحاكاة الضغط */
-}
 /* زر استكمال الشراء - تصميم عصري */
 .continue-shopping {
     display: block;  /* جعله في سطر منفصل */
@@ -206,4 +186,30 @@ input, textarea {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+
+/* زر تأكيد الطلب - ستايل جديد */
+.submit-order {
+    background-color: #ff4d4d !important; /* لون أحمر جذاب */
+    color: white !important; /* لون النص */
+    font-size: 16px !important;
+    font-weight: bold !important;
+    padding: 12px 20px !important;
+    border: none !important;
+    border-radius: 8px !important; /* حواف دائرية */
+    cursor: pointer !important;
+    transition: all 0.3s ease-in-out !important;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2) !important;
+    margin-top: 15px;
+}
+
+.submit-order:hover {
+    background-color: #e60000 !important; /* لون أغمق عند التحويل */
+    transform: scale(1.1) !important; /* تكبير بسيط */
+}
+
+.submit-order:active {
+    background-color: #cc0000 !important; /* لون داكن عند الضغط */
+    transform: scale(0.95) !important; /* تقليل الحجم لمحاكاة الضغط */
 }

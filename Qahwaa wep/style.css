@@ -238,7 +238,29 @@ section{
     margin: 10px;
 }
 
+.sale-badge {
+    position: center;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 10;
+    display: block;}
 
+    .discount-tag {
+    background-color: red;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 3px 8px;
+    margin-left: 10px;
+    border-radius: 5px;
+    vertical-align: middle;
+}
 
 
 .products {
@@ -330,7 +352,7 @@ section{
 }
 
 /* Add to Cart Button */
-.add-to-cart {
+.add-to-cart , .go-to-cart {
     background-color: rgb(114, 60, 10);
     color: white;
     padding: 10px 15px;
@@ -511,6 +533,8 @@ input[type="radio"] {
 .image-container .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
+
+
 
 .cart-section {
     padding: 50px;

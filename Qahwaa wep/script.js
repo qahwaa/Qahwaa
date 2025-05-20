@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             localStorage.setItem("cart", JSON.stringify(cart));
             updateCartCount();
-            alert("✅ تمت إضافة المنتج إلى السلة!");
+            alert("✅ Order added to cart successfully!");
         });
     });
 
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (cartCountElement) {
             cartCountElement.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
         } else {
-            console.warn("⚠️ لم يتم العثور على عنصر cart-count!");
+            console.warn("⚠️ warning: cart-count element not found!");
         }
     }
 

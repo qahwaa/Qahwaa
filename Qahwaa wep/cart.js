@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // حساب التكلفة الإجمالية
     function calculateTotal() {
-        let total = cart.reduce((sum, item) => sum + (400 * item.quantity), 60);
+        let total = cart.reduce((sum, item) => sum + (399 * item.quantity), 50);
         totalCostElement.textContent = total + " LE";
     }
 
@@ -83,6 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    
+
     // إرسال الطلب إلى بوت التليجرام
     document.getElementById("submit-order").addEventListener("click", function () {
         if (cart.length === 0) {
@@ -118,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 if (data.ok) {
-                    alert("✅ تم إرسال الطلب بنجاح إلى البوت!");
+                    alert("✅ order sent successfully!");
                     localStorage.removeItem("cart");
                     cart = [];
                     renderCart();

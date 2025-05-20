@@ -58,6 +58,18 @@ header {
     background: rgba(0, 0, 0, 0.8);
 }
 
+.discount-tag {
+    background-color: red;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 3px 8px;
+    margin-left: 10px;
+    border-radius: 5px;
+    vertical-align: middle;
+}
+
+
 /* ✅ تحسين تصميم تفاصيل المنتج */
 .product-details {
     background: white;
@@ -116,7 +128,7 @@ header {
     padding: 12px;
     font-size: 16px;
     color: white;
-    background: #8a4b08;
+    background: #c08e05;
     text-decoration: none;
     border-radius: 5px;
     width: 80%;
@@ -127,7 +139,7 @@ header {
 }
 
 .add-to-cart:hover, .go-to-cart:hover, .back-button:hover {
-    background: #aa7709;
+    background: #04472e;
     transform: scale(1.05);
 }
 
