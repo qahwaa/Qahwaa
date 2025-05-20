@@ -48,6 +48,8 @@ th {
     border-radius: 5px;
 }
 
+
+
 /* زر مسح السلة */
 .clear-cart {
     background: red;
@@ -65,6 +67,8 @@ th {
     background-color: darkred;
     transform: scale(1.05);
 }
+
+
 
 .home-page {
     background: red;

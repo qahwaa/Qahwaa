@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // حساب التكلفة الإجمالية
     function calculateTotal() {
-        let total = cart.reduce((sum, item) => sum + (450 * item.quantity), 50);
+        let total = cart.reduce((sum, item) => sum + (399 * item.quantity), 50);
         totalCostElement.textContent = total + " LE";
     }
 
@@ -82,6 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
             updateCartCount();
         }
     });
+
+    
 
     // إرسال الطلب إلى بوت التليجرام
     document.getElementById("submit-order").addEventListener("click", function () {
