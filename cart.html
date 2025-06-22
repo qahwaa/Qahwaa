@@ -78,7 +78,7 @@
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
             function calculateTotal() {
-                let total = cart.reduce((sum, item) => sum + (400 * Math.max(1, item.quantity)), 50);
+                let total = cart.reduce((sum, item) => sum + (450 * Math.max(1, item.quantity)), 50);
                 totalCostElement.textContent = total + " LE";
             }
 
