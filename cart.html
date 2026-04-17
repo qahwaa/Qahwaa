@@ -14,7 +14,7 @@
     </header>
 
     <section class="cart-section">
-        <h2 class="title cart-title">🛒 Shopping Cart</h2>
+        <h2 class="title cart-title"> 🛒 Shopping Cart</h2>
         <div class="cart-content">
             <table>
                 <thead>
@@ -64,7 +64,7 @@
             </tr>
             <tr>
                 <td colspan="2">
-                    <button id="submit-order" class="submit-btn">Submit Order</button>
+                    <button id="submit-order" class="submit-order">Submit Order</button>
                 </td>
             </tr>
         </table>
@@ -78,7 +78,7 @@
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
             function calculateTotal() {
-                let total = cart.reduce((sum, item) => sum + (350 * Math.max(1, item.quantity)), 50);
+                let total = cart.reduce((sum, item) => sum + (450 * Math.max(1, item.quantity)), 50);
                 totalCostElement.textContent = total + " LE";
             }
 

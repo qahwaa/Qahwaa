@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Out Of Control</title>
     <link rel="stylesheet" href="about1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
+    <div class="header-container">
+        <a href="index.html" class="home-icon">
+            <i class="fas fa-home"></i> </a>
+        
         <h3>ZAZA BASHA</h3>
-    </header>
+        
+        <div style="width: 24px;"></div> 
+    </div>
+</header>
 
     <section class="product-details">
         <!-- سلايدر الصور -->
@@ -23,18 +31,20 @@
         <h2>Product Details</h2>
         <p>ZAZA BASHA T-shirt made of high-quality materials and very comfortable</p>
         <p>Girl model hight 164cm and weight 56kg ,wear small size</p>
-        <p>Price: 350 L.E</p>
-        <span class="discount-tag">30% OFF 🔥</span>
+        <p>Price: 450 L.E</p>
+        <span class="discount-tag">10%OFF</span>
 
         <div class="options">
             <!-- ✅ اختيار المقاس -->
             <div class="option-group">
                 <label for="size">Size:</label>
                 <select id="size">
+                    
                     <option>S</option>
                     <option>M</option>
                     <option>L</option>
                     <option>XL</option>
+                    
                 </select>
             </div>
         
@@ -44,6 +54,7 @@
                 <select id="color">
                     <option>White</option>
                     <option>Black</option>
+                    <option>Grey</option>
                 </select>
             </div>
         
@@ -93,7 +104,7 @@
 
             let product = {
                 name: "Out Of Control",
-                price: 399,
+                price: 450,
                 size: size,
                 color: color,
                 quantity: quantity,

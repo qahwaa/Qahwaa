@@ -1,3 +1,12 @@
+:root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --text: #ffffff;
+    --accent: #c9a657; /* الدهبي بتاعنا */
+    --muted: #aaaaaa;
+}
+
+
 /* ✅ إعدادات الصفحة الأساسية */
 body {
     font-family: Arial, sans-serif;
@@ -5,18 +14,50 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
 /* ✅ شريط العنوان */
+/* ✅ الهيدر الاحترافي */
 header {
-    background: #8a4b08;
-    color: white;
-    padding: 15px;
-    font-size: 24px;
+    background: var(--card);
+    padding: 15px 25px; /* مسافة داخلية متوازنة */
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05); /* خط خفيف جداً بيدي فخامة */
+}
+
+/* الأيقونة */
+.home-link {
+    color: var(--text);
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+    width: 40px; /* تحديد عرض ثابت للأيقونة */
+    text-align: left;
+}
+
+.home-link:hover {
+    color: var(--accent);
+    transform: scale(1.1);
+}
+
+/* الاسم اللي في النص */
+header h3 {
+    margin: 0;
+    font-size: 18px;
+    letter-spacing: 2px; /* مسافات بين الحروف للإنجليزي بتخليه شيك */
+    text-transform: uppercase;
+    flex-grow: 1; /* يخلي العنوان ياخد المساحة اللي في النص */
     text-align: center;
 }
 
+/* ✅ العنصر السحري عشان السنترة تظبط */
+.header-spacer {
+    width: 40px; /* نفس عرض الأيقونة بالظبط عشان الكفتين يتساووا */
+}
 /* ✅ تحسين تصميم سلايدر الصور */
 .slider {
     position: relative;
@@ -72,7 +113,8 @@ header {
 
 /* ✅ تحسين تصميم تفاصيل المنتج */
 .product-details {
-    background: white;
+    background: var(--card);
+    color: var(--text);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -83,12 +125,12 @@ header {
 
 .product-details h2 {
     font-size: 22px;
-    color: #333;
+    color: var(--text);
 }
 
 .product-details p {
     font-size: 18px;
-    color: #555;
+    color: var(--text);
 }
 
 /* ✅ تحسين اختيار المقاس واللون والكمية */
@@ -128,7 +170,7 @@ header {
     padding: 12px;
     font-size: 16px;
     color: white;
-    background: #c08e05;
+    background: var(--muted);
     text-decoration: none;
     border-radius: 5px;
     width: 80%;
@@ -138,11 +180,14 @@ header {
     cursor: pointer;
 }
 
-.add-to-cart:hover, .go-to-cart:hover, .back-button:hover {
-    background: #04472e;
+.add-to-cart:hover, .go-to-cart:hover  {
+    background: var(--accent);
     transform: scale(1.05);
 }
-
+.back-button:hover {
+    background: var(--accent);
+    transform: scale(1.05);
+}
 /* ✅ تحسين التجاوب مع الأجهزة الصغيرة */
 @media (max-width: 480px) {
     .product-details {

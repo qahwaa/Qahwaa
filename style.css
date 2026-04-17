@@ -1,69 +1,91 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lateef:wght@200;300;400;500;600;700;800&display=swap');
 
 
 * {
-    font-family: 'poppins', sans-serif;
+    font-family: 'Lateef', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
 
+:root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --text: #ffffff;
+    --muted: #aaaaaa;
+    --accent: #c9a657;
+}
+
 header {
-    background-color: rgb(129, 50, 13);
+    background-color: #0a0a0a; /* أسود فخم */
     width: 100%;
     position: fixed;
     z-index: 999;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 200px;
-}
-.logo{
-    color: rgb(250, 208, 183);
-    text-decoration: none;
-    font-size: 1.8em;
-    font-weight: 700;
-    text-transform: uppercase;
+    padding: 15px 200px;
+    border-bottom: 1px solid rgba(255,255,255,0.08); /* خط خفيف زي Shopify */
 }
 
+/* اللوجو */
+.logo {
+    color: #e5e5e5; /* أبيض مش ناصع */
+    text-decoration: none;
+    font-size: 1.6em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* القائمة */
 .navigation ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
-.navigation a{
-    color: rgb(224, 224, 224);
+/* اللينكات */
+.navigation a {
+    color: #aaa; /* رمادي شيك */
     font-weight: 500;
-    font-size: 1.1em;
+    font-size: 0.95em;
     text-decoration: none;
-    padding-left: 30px;
+    position: relative;
+    transition: 0.3s;
 }
 
-.navigation a:hover{
-    color: rgb(67, 192, 105);
+/* Hover زي الصورة الأولى */
+.navigation a:hover {
+    color: #ffffff;
 }
 
-section{
-    padding: 70px 150px;
-
+/* خط تحت اللينك عند hover */
+.navigation a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent); /* دهبي */
+    transition: 0.3s;
 }
 
-/* زر الهامبرغر */
+.navigation a:hover::after {
+    width: 100%;
+}
+
+/* الهامبرغر */
 .hamburger {
-    display: none; /* إخفاؤه في الوضع العادي */
-    font-size: 30px;
+    display: none;
+    font-size: 28px;
     cursor: pointer;
-    color: white;
+    color: #e5e5e5;
     background: none;
     border: none;
-    outline: none;
 }
-
 /* تعديل القائمة للأجهزة الصغيرة */
 @media (max-width: 768px) {
     .hamburger {
@@ -108,26 +130,26 @@ section{
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     width: 100%;
     min-height: 100vh;
     background: url(img/tree.jpg) no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
 }
 
-/* إضافة طبقة مموهة فوق الخلفية */
+/* Dark Overlay أقوى زي الصورة 1 */
 .main::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* لون شفاف غامق لتحسين الوضوح */
-    backdrop-filter: blur(4px); /* تأثير التمويه */
-    -webkit-backdrop-filter: blur(8px); /* دعم لمتصفحات WebKit */
-    z-index: 0; /* يكون تحت النصوص */
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.6)
+    );
+    z-index: 0;
 }
 
 /* جعل المحتوى فوق الطبقة */
@@ -137,40 +159,35 @@ section{
 }
 
 
-.main h2{
-    font-size: 1.4em;
-    color: rgb(202, 241, 247);
-    font-weight: 500;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
+/* السطر الصغير */
+.main h2 {
+    font-size: 1.5em;
+    color: var(--muted);
 }
 
 .main h2 span {
-    color: rgb(209, 121, 38);
-    font-size: 3em;
-    font-weight: 700;
-    display: inline-block;
-    margin-top: 10px;
+    font-size: 5em;
+    color: var(--text);
 }
 
-.main h3{
-    font-size: 2.1em;
-        background: linear-gradient(to right, #eba563, #d36b17, #f76826);
-        -webkit-background-clip : text;
-        -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    margin-top: 10px;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
-    box-shadow: #160701;
+.main h3 {
+    font-size: 1.8em;
+    color: var(--muted);
+}
+
+/* الوصف */
+.main p {
+    color: #999; /* رمادي هادي */
+    font-size: 1em;
 }
 
 .main-btn{
     font-size: 1.1em;
-    color: rgb(255, 255, 255);
+    background: var(--muted);
+    color: rgb(5, 5, 5);
+    font-weight: 700;
     font-weight: 600;
     line-height: 1.8em;
-    background-color: rgb(114, 60, 10);
     text-decoration: none;
     display: inline-block;
     padding: 0.9375em 2.1875em;
@@ -181,21 +198,29 @@ section{
 }
 
 .main-btn:hover{
-    background-color: rgb(187, 107, 33);
+    background: var(--card);
     transform: scale(1.1);
 }
 
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* مسافة ثابتة بين الأيقونات */
+    margin-top: 20px;
+    padding-right: 0; /* تأكد إن مفيش بادنج قديم */
+}
+
 .social-icons a {
-    color: rgb(255, 255, 255);
+    padding: 0; /* صفر البادنج القديم */
     font-size: 1.7em;
-    padding-right: 30px;
+    color: white;
 }
 
 .title{
     display: flex;
     justify-content: center;
     font-size: 2.2em;
-    color: rgb(126, 50, 0);
+    color: var(--text);
     font-weight: 800;
     margin-bottom: 30px;
 }
@@ -210,12 +235,13 @@ section{
 .card{
     width: 21.25em;
     margin: 20px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--card);
     border-radius: 10px;
     box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
     overflow: hidden;
     transition: 0.7s ease;
     padding: 25px;
+    background: var(--card)
 }
 
 .card:hover{
@@ -224,7 +250,7 @@ section{
 
 .icon {
     font-size: 8em;
-    color: rgb(126, 50, 0);
+    color: var(--text);
     text-align: center;
 }
 .info{
@@ -232,8 +258,8 @@ section{
 }
 
 .info h3{
-    color: rgb(126, 50, 0);
-    font-size: 1.2em;
+    color: var(--text);
+    font-size: 2em;
     font-weight: 700;
     margin: 10px;
 }
@@ -270,7 +296,7 @@ section{
 
 .products .title {
     font-size: 2.5em;
-    color: rgb(126, 50, 0);
+    color: var(--text);
     font-weight: 800;
     margin-bottom: 40px;
 }
@@ -284,7 +310,7 @@ section{
 
 /* ✅ جعل الكارت بالكامل مربع */
 .product {
-    background: white;
+    background: var(--card);
     border-radius: 10px;
     padding: 20px;
     width: 300px;
@@ -296,6 +322,7 @@ section{
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: 0.4s ease-in-out;
     text-align: center;
+    color: var(--text);
 }
 
 .product:hover {
@@ -323,7 +350,7 @@ section{
 
 .product h3 {
     font-size: 1.4em;
-    color: rgb(126, 50, 0);
+    color: var(--text);
     font-weight: 700;
     margin: 10px 0;
 }
@@ -353,7 +380,7 @@ section{
 
 /* Add to Cart Button */
 .add-to-cart , .go-to-cart {
-    background-color: rgb(114, 60, 10);
+    background-color: var(--muted);
     color: white;
     padding: 10px 15px;
     font-size: 1.1em;
@@ -365,8 +392,8 @@ section{
     width: 100%;
 }
 
-.add-to-cart:hover {
-    background-color: rgb(187, 107, 33);
+.add-to-cart:hover , .go-to-cart:hover {
+    background-color: var(--card);
 }
 
 /* ✅ تحسين العرض على الهواتف المحمولة */
@@ -537,7 +564,7 @@ input[type="radio"] {
 
 
 .cart-section {
-    padding: 50px;
+    padding: 100px;
     text-align: center;
 }
 
@@ -604,9 +631,42 @@ th, td {
     font-size: 20px;
 }
 
+
+.home-page {
+    background: #666262;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.home-page:hover {
+    background-color: #302929;
+    transform: scale(1.05);
+}
+
+.order-section {
+    padding: 80px 150px;
+    text-align: center;
+}
+
+
+/* صندوق الإجمالي */
+.total-box {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #302929;
+}
+
+
 /* زر تأكيد الطلب - ستايل جديد */
 .submit-order {
-    background-color: #ff4d4d !important; /* لون أحمر جذاب */
+    background-color: #666262 !important; /* لون أحمر جذاب */
     color: white !important; /* لون النص */
     font-size: 16px !important;
     font-weight: bold !important;
@@ -620,12 +680,12 @@ th, td {
 }
 
 .submit-order:hover {
-    background-color: #e60000 !important; /* لون أغمق عند التحويل */
+    background-color: #302929 !important; /* لون أغمق عند التحويل */
     transform: scale(1.1) !important; /* تكبير بسيط */
 }
 
 .submit-order:active {
-    background-color: #cc0000 !important; /* لون داكن عند الضغط */
+    background-color: #302929 !important; /* لون داكن عند الضغط */
     transform: scale(0.95) !important; /* تقليل الحجم لمحاكاة الضغط */
 }
 
@@ -636,8 +696,8 @@ th, td {
 
 .footer {
     width: 100%;
-    background-color: #160701;
-    color: white;
+    background: var(--card);
+    color: var(--text);
     padding: 10px 20px;
     font-size: 14px;
     display: flex;
@@ -660,6 +720,89 @@ th, td {
 /* منع تداخل الفوتر مع المحتوى */
 body {
     margin-bottom: 50px;
+    
+    font-family: "Lateef", serif;
+
+    background: var(--bg);
+    color: var(--text);
+}
+
+.lateef-extralight {
+  font-family: "Lateef", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.lateef-light {
+  font-family: "Lateef", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.lateef-regular {
+  font-family: "Lateef", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.lateef-medium {
+  font-family: "Lateef", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.lateef-semibold {
+  font-family: "Lateef", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.lateef-bold {
+  font-family: "Lateef", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.lateef-extrabold {
+  font-family: "Lateef", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.marquee {
+  width: 100%;
+  background-color: #fff; /* الخلفية البيضاء زي الصورة */
+  color: #000; /* النص أسود */
+  overflow: hidden; /* إخفاء أي نص خارج البرواز */
+  padding: 11px 0;
+  white-space: nowrap; /* منع النص من النزول لسطر جديد */
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.marquee-content {
+  display: inline-block;
+  padding-left: 100%; /* البداية من خارج الشاشة */
+  animation: scroll-left 20s linear infinite; /* سرعة الحركة 20 ثانية */
+}
+
+.marquee-content span {
+  font-family: 'Lateef', 'Poppins', sans-serif; /* الخطوط اللي ظبطناها سوا */
+  font-size: 19px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* الأنميشن المسؤول عن الحركة */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%); /* يتحرك نص المسافة عشان التكرار يملأ الفراغ */
+  }
 }
 
 

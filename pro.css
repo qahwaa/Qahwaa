@@ -1,17 +1,31 @@
 /* إعدادات الصفحة الأساسية */
+
+
+:root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --text: #ffffff;
+    --muted: #aaaaaa;
+    --accent: #c9a657;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     direction: rtl;
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: var(--bg);
 }
+
+
+
 
 /* شريط العنوان */
 header {
-    background: #834e00;
-    color: white;
+    background: var(--bg);
+    color: rgb(255, 255, 255);
     padding: 15px;
     font-size: 24px;
 }
@@ -22,12 +36,12 @@ header {
     justify-content: center;
     gap: 10px;
     padding: 15px;
-    background-color: #f1f1f1;
+    background-color: var(--bg);
     border-bottom: 2px solid #ddd;
 }
 
 .nav-button {
-    background-color: #3588e7;
+    background-color: var(--muted);
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -37,7 +51,7 @@ header {
 }
 
 .nav-button:hover {
-    background-color: #e23618;
+    background-color: var(--accent);
     transform: scale(1.05);
 }
 
@@ -79,7 +93,8 @@ header {
 }
 
 .product {
-    background: white;
+    background: var(--card);
+    color: var(--text);
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -97,7 +112,7 @@ header {
 
 /* زر الشراء */
 button {
-    background: #684003;
+    background: var(--muted);
     color: white;
     border: none;
     padding: 10px;
@@ -107,7 +122,7 @@ button {
 }
 
 button:hover {
-    background: #aa7709;
+    background: #cde280;
 }
 
 /* تحسين التوافق مع الأجهزة الصغيرة */
@@ -160,7 +175,7 @@ button:hover {
 /* زر الـ "About" */
 .about-button {
     display: inline-block;
-    background: #805403;
+    background: var(--muted);
     color: white;
     text-decoration: none;
     padding: 10px 20px;
@@ -171,6 +186,6 @@ button:hover {
 }
 
 .about-button:hover {
-    background: #a37903;
+    background: var(--accent);
     transform: scale(1.05);
 }

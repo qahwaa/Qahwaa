@@ -20,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    
+
     // ========================== تحميل بيانات السلة من localStorage ==========================
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
