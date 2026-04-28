@@ -564,7 +564,7 @@ input[type="radio"] {
 
 
 .cart-section {
-    padding: 100px;
+    padding: 120px 20px;
     text-align: center;
 }
 
@@ -577,6 +577,11 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
 }
 
 table, th, td {
