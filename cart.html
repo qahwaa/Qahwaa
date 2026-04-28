@@ -31,7 +31,7 @@
                 <tbody id="cart-items"></tbody>
             </table>
             </div>
-            <p id="total-cost">Total Cost: <span id="cost-value">0</span> LE (Shipping fees: 50 LE)</p>
+            <p id="total-cost">Total Cost: <span id="cost-value">0</span> LE (Shipping fees: 80 LE)</p>
             
 
             <button class="clear-cart">Clear Cart</button>
@@ -80,7 +80,7 @@
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
             function calculateTotal() {
-                let total = cart.reduce((sum, item) => sum + (450 * Math.max(1, item.quantity)), 50);
+                let total = cart.reduce((sum, item) => sum + (450 * Math.max(1, item.quantity)), 80);
                 totalCostElement.textContent = total + " LE";
             }
 
