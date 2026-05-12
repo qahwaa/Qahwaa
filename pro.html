@@ -19,59 +19,115 @@
         
     </div>
 
+<div class="filter-box">
+
+    <select id="fitFilter">
+        <option value="all">All Fits</option>
+        <option value="box-fit">Box Fit</option>
+        <option value="Oversized">Oversized</option>
+    </select>
+
+    <select id="priceFilter">
+        <option value="all">All Prices</option>
+        <option value="499">599~499 L.E</option>
+        <option value="600">999~600 L.E</option>
+    </select>
+
+    <button onclick="filterProducts()">Filter</button>
+
+</div>
+
+
     <section class="products">
-        <div class="product">
+<div class="product" data-fit="box-fit" data-price="499">
+            <span class="sale-badge">SALE</span>
+            <a href="about2.html">
+            <img src="img/kk22.jpg" alt="Product Image">  
+            </a>
+            <h2>BASIC (BOX-FIT)</h2>
+            <p>price : <s> 600 </s>  499 L.E
+        <span class="discount-tag">15% OFF</span>
+    </p>
+            <a href="about2.html" class="about-button">Details</a>
+        </div>
+
+    
+        <div class="product" data-fit="Oversized" data-price="499">
             <span class="sale-badge">SALE</span>
             <a href="about1.html">
             <img src="img/hand22.jpg" alt="هودي أخضر"></a>
             
             <h2>ZAZA BASHA</h2>
-            <p>price : <s> 499 </s>  450 L.E
-        <span class="discount-tag">10% OFF</span>
+            <p>price : <s> 600 </s>  499 L.E
+        <span class="discount-tag">15% OFF</span>
     </p>
             <a href="about1.html" class="about-button">Details</a>
         </div>
         
-        <div class="product">
-            <span class="sale-badge">SALE</span>
-            <a href="about2.html">
-            <img src="img/kk22.jpg" alt="Product Image">  
-            </a>
-            <h2>KHOFASH</h2>
-            <p>price : <s> 499 </s>  450 L.E
-        <span class="discount-tag">10% OFF</span>
-    </p>
-            <a href="about2.html" class="about-button">Details</a>
-        </div>
+        
         
          
 
-
+<!--
         <div class="product">
             <span class="sale-badge">SALE</span>
                 <a href="about3.html">
             <img src="img/ff22.jpg" alt="هودي بيج"></a>
             <h2>Dive In Space</h2>
-            <p>price : <s> 499 </s>  450 L.E
-        <span class="discount-tag">10% OFF</span>
+            <p>price : <s> 600 </s>  450 L.E
+        <span class="discount-tag">25% OFF</span>
     </p>
             <a href="about3.html" class="about-button">Details</a>
         </div>
-
-        <div class="product">
+-->
+        <div class="product" data-fit="Oversized" data-price="499">
             <span class="sale-badge">SALE</span>
             <a href="about4.html">
             <img src="img/cairo22.jpg" alt="تيشيرت أسود ستايل">
             </a>
             <h2>هنا القاهرة</h2>
-            <p>price : <s> 499 </s>  450 L.E
-        <span class="discount-tag">10% OFF</span>
+            <p>price : <s> 600 </s>  499 L.E
+        <span class="discount-tag">15% OFF</span>
     </p>
             <a href="about4.html" class="about-button">Details</a>
         </div>
     </section>
 
     <script src="cart.js"></script>
+
+<script>
+
+function filterProducts(){
+
+    let fitValue = document.getElementById("fitFilter").value;
+    let priceValue = document.getElementById("priceFilter").value;
+
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(product => {
+
+        let fit = product.dataset.fit;
+        let price = product.dataset.price;
+
+        let fitMatch =
+            fitValue === "all" || fit === fitValue;
+
+        let priceMatch =
+            priceValue === "all" || price === priceValue;
+
+        if(fitMatch && priceMatch){
+            product.style.display = "block";
+        }else{
+            product.style.display = "none";
+        }
+
+    });
+}
+
+</script>
+
+
+
 
 </body>
 </html>

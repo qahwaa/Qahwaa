@@ -232,6 +232,219 @@ header {
     flex-wrap: wrap;
 }
 
+/* =========================
+   Bundle Section
+========================= */
+
+.bundle-section{
+
+    padding: 90px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+    linear-gradient(
+        180deg,
+        #0f0f0f,
+        #151515
+    );
+}
+
+.bundle-content{
+
+    width: 100%;
+    max-width: 900px;
+
+    background:
+    linear-gradient(
+        145deg,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.01)
+    );
+
+    border:
+    1px solid rgba(255,255,255,0.06);
+
+    border-radius: 30px;
+
+    padding: 70px 40px;
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+/* glow */
+
+.bundle-content::before{
+
+    content: "";
+
+    position: absolute;
+
+    width: 250px;
+    height: 250px;
+
+    background:
+    rgba(201,166,87,0.08);
+
+    border-radius: 50%;
+
+    top: -80px;
+    right: -80px;
+
+    filter: blur(40px);
+}
+
+/* tag */
+
+.bundle-tag{
+
+    color: var(--accent);
+
+    font-size: 1em;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+
+    font-weight: 700;
+}
+
+/* title */
+
+.bundle-content h2{
+
+    font-size: 4.5em;
+
+    color: var(--text);
+
+    margin-bottom: 15px;
+
+    line-height: 1;
+}
+
+/* description */
+
+.bundle-text{
+
+    color: #bdbdbd;
+
+    font-size: 1.5em;
+
+    margin-bottom: 25px;
+}
+
+/* prices */
+
+.bundle-prices{
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 35px;
+}
+
+.old-price{
+
+    color: #666;
+
+    font-size: 2em;
+
+    text-decoration: line-through;
+}
+
+.new-price{
+
+    color: var(--accent);
+
+    font-size: 3em;
+
+    font-weight: 800;
+}
+
+/* button */
+
+.bundle-btn{
+
+    display: inline-block;
+
+    background: var(--accent);
+
+    color: #111;
+
+    text-decoration: none;
+
+    padding: 16px 40px;
+
+    border-radius: 18px;
+
+    font-size: 1.1em;
+
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+.bundle-btn:hover{
+
+    transform:
+    translateY(-4px);
+
+    box-shadow:
+    0 10px 25px rgba(201,166,87,0.25);
+
+    background: #d8b76b;
+}
+
+/* responsive */
+
+@media (max-width: 768px){
+
+    .bundle-content{
+
+        padding: 50px 25px;
+    }
+
+    .bundle-content h2{
+
+        font-size: 2.8em;
+    }
+
+    .bundle-text{
+
+        font-size: 1.2em;
+    }
+
+    .old-price{
+
+        font-size: 1.5em;
+    }
+
+    .new-price{
+
+        font-size: 2.2em;
+    }
+
+    .bundle-btn{
+
+        width: 100%;
+    }
+}
+
 .card{
     width: 21.25em;
     margin: 20px;
@@ -357,7 +570,7 @@ header {
 
 .product p {
     font-size: 0.95em;
-    color: rgb(80, 80, 80);
+    color: rgb(202, 200, 200);
     margin-bottom: 10px;
 }
 
@@ -636,6 +849,140 @@ th, td {
     font-size: 20px;
 }
 
+/* =========================
+   Coupon Section
+========================= */
+
+.coupon-box{
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.coupon-box input{
+    width: 260px;
+    padding: 14px 18px;
+
+    background: #161616;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 14px;
+
+    color: var(--text);
+
+    font-size: 1.1em;
+
+    outline: none;
+
+    transition: 0.3s ease;
+}
+
+.coupon-box input::placeholder{
+    color: #777;
+}
+
+.coupon-box input:focus{
+    border-color: var(--accent);
+
+    box-shadow:
+        0 0 0 3px rgba(201,166,87,0.15);
+}
+
+/* زرار التطبيق */
+
+#apply-coupon{
+    background: var(--accent);
+
+    color: #111;
+
+    border: none;
+
+    padding: 14px 24px;
+
+    border-radius: 14px;
+
+    font-size: 1em;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+#apply-coupon:hover{
+    transform: translateY(-2px);
+
+    background: #d8b76b;
+
+    box-shadow:
+        0 8px 20px rgba(201,166,87,0.25);
+}
+
+/* الرسالة */
+
+#coupon-message{
+    margin-top: 12px;
+
+    font-size: 1.1em;
+
+    color: var(--accent);
+
+    font-weight: 600;
+}
+
+/* الخصم */
+
+#discount-row{
+    margin-top: 10px;
+
+    color: #cfcfcf;
+
+    font-size: 1.05em;
+}
+
+#discount-value{
+    color: var(--accent);
+
+    font-weight: bold;
+}
+
+/* Total Cost تحسين */
+
+#total-cost{
+    margin-top: 25px;
+
+    font-size: 1.4em;
+
+    font-weight: 700;
+
+    color: var(--text);
+}
+
+#cost-value{
+    color: var(--accent);
+}
+
+/* Responsive */
+
+@media (max-width: 768px){
+
+    .coupon-box{
+        flex-direction: column;
+    }
+
+    .coupon-box input{
+        width: 100%;
+        max-width: 320px;
+    }
+
+    #apply-coupon{
+        width: 100%;
+        max-width: 320px;
+    }
+}
 
 .home-page {
     background: #666262;

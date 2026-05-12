@@ -32,7 +32,27 @@
             </table>
             </div>
             <p id="total-cost">Total Cost: <span id="cost-value">0</span> LE (Shipping fees: 80 LE)</p>
-            
+
+            <div class="coupon-box">
+
+    <input 
+        type="text"
+        id="coupon-input"
+        placeholder="Enter Discount Code"
+    >
+
+    <button id="apply-coupon">
+        Apply
+    </button>
+
+</div>
+
+<p id="coupon-message"></p>
+
+<p id="discount-row">
+    Discount:
+    <span id="discount-value">0</span> LE
+</p>
 
             <button class="clear-cart">Clear Cart</button>
             <button class="continue-shopping" onclick="window.location.href='pro.html'">🛍️ Continue Shopping</button>
@@ -79,10 +99,36 @@
 
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+            const coupons = {
+    QAHWAA10: 10,
+    happyeid: 15,
+    COFFEE20: 20
+};
+
+let discountPercent = 0;
+
             function calculateTotal() {
-                let total = cart.reduce((sum, item) => sum + (450 * Math.max(1, item.quantity)), 80);
-                totalCostElement.textContent = total + " LE";
-            }
+
+    let subtotal = cart.reduce(
+        (sum, item) =>
+            sum + (500 * Math.max(1, item.quantity)),
+        0
+    );
+
+    let shipping = 80;
+
+    let discountAmount =
+        subtotal * (discountPercent / 100);
+
+    let finalTotal =
+        subtotal + shipping - discountAmount;
+
+    totalCostElement.textContent =
+        finalTotal + " LE";
+
+    document.getElementById("discount-value")
+        .textContent = discountAmount + " LE";
+}
 
             function renderCart() {
                 cartItemsContainer.innerHTML = "";
@@ -142,6 +188,37 @@
             });
 
             renderCart();
+
+document.getElementById("apply-coupon")
+.addEventListener("click", function () {
+
+    const code = document
+        .getElementById("coupon-input")
+        .value
+        .trim()
+        .toUpperCase();
+
+    const message =
+        document.getElementById("coupon-message");
+
+    if (coupons[code]) {
+
+        discountPercent = coupons[code];
+
+        message.innerText =
+            `✅ Coupon Applied (${discountPercent}% OFF)`;
+
+    } else {
+
+        discountPercent = 0;
+
+        message.innerText =
+            "❌ Invalid Coupon Code";
+    }
+
+    calculateTotal();
+});
+
         });
 
         document.getElementById("submit-order").addEventListener("click", function () {

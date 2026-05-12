@@ -40,6 +40,20 @@ header {
     border-bottom: 2px solid #ddd;
 }
 
+.filter-box{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:20px 0;
+}
+
+.filter-box select,
+.filter-box button{
+    padding:10px;
+    border:none;
+    border-radius:8px;
+}
+
 .nav-button {
     background-color: var(--muted);
     color: white;
@@ -93,6 +107,8 @@ header {
 }
 
 .product {
+    width: 90%;
+    max-width: 390px;
     background: var(--card);
     color: var(--text);
     padding: 15px;
@@ -100,7 +116,6 @@ header {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
-
 .product:hover {
     transform: scale(1.05);
 }
@@ -122,7 +137,7 @@ button {
 }
 
 button:hover {
-    background: #cde280;
+    background: #8b6719;
 }
 
 /* تحسين التوافق مع الأجهزة الصغيرة */
