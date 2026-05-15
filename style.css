@@ -16,25 +16,18 @@
     --text: #ffffff;
     --muted: #aaaaaa;
     --accent: #c9a657;
-    --glass:
-rgba(255,255,255,0.04);
 }
 
-header{
-    background: rgba(10,10,10,0.75);
-
-    backdrop-filter: blur(12px);
-
-    border-bottom:
-    1px solid rgba(255,255,255,0.05);
-
-    padding: 18px 120px;
-
-    transition: 0.3s;
-}
-
-header:hover{
-    background: rgba(10,10,10,0.9);
+header {
+    background-color: #0a0a0a; /* أسود فخم */
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 200px;
+    border-bottom: 1px solid rgba(255,255,255,0.08); /* خط خفيف زي Shopify */
 }
 
 /* اللوجو */
@@ -432,39 +425,24 @@ header:hover{
 }
 
 /* ✅ جعل الكارت بالكامل مربع */
-.product{
-    position: relative;
-
-    background:
-    linear-gradient(
-        145deg,
-        #181818,
-        #111
-    );
-
-    border:
-    1px solid rgba(255,255,255,0.04);
-
-    border-radius: 24px;
-
-    overflow: hidden;
-
-    transition:
-    transform .4s ease,
-    box-shadow .4s ease;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.35);
-
-    padding: 18px;
+.product {
+    background: var(--card);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    height: 100%; /* يجعل الكارت يأخذ حجم الصورة */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.4s ease-in-out;
+    text-align: center;
+    color: var(--text);
 }
 
-.product:hover{
-    transform:
-    translateY(-12px);
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,.45);
+.product:hover {
+    transform: translateY(-10px);
 }
 
 /* ✅ جعل الصورة مربعة تمامًا */
@@ -480,18 +458,10 @@ header:hover{
     background: #f7f7f7;
 }
 
-.image-container img{
+.image-container img {
     width: 100%;
     height: 100%;
-
-    object-fit: cover;
-
-    transition:
-    transform .6s ease;
-}
-
-.product:hover img{
-    transform: scale(1.07);
+    object-fit: cover; /* ✅ يجعل الصورة تملأ المربع بالكامل */
 }
 
 .product h3 {
@@ -525,61 +495,21 @@ header:hover{
 }
 
 /* Add to Cart Button */
-.add-to-cart,
-.go-to-cart{
-
-    background:
-    linear-gradient(
-    135deg,
-    var(--accent),
-    #e4c16f
-    );
-
-    color: #111;
-
+.add-to-cart , .go-to-cart {
+    background-color: var(--muted);
+    color: white;
+    padding: 10px 15px;
+    font-size: 1.1em;
     border: none;
-
-    padding: 14px;
-
-    border-radius: 14px;
-
-    font-size: 1.05em;
-
-    font-weight: 700;
-
-    transition: 0.35s ease;
-
+    border-radius: 5px;
+    cursor: pointer;
     margin-top: 15px;
+    transition: 0.4s;
+    width: 100%;
 }
 
-.add-to-cart:hover,
-.go-to-cart:hover{
-
-    transform:
-    translateY(-3px);
-
-    box-shadow:
-    0 10px 25px rgba(201,166,87,.35);
-}
-
-.cart-content{
-
-    background:
-    linear-gradient(
-    145deg,
-    #181818,
-    #111
-    );
-
-    border-radius: 25px;
-
-    padding: 30px;
-
-    border:
-    1px solid rgba(255,255,255,.05);
-
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.35);
+.add-to-cart:hover , .go-to-cart:hover {
+    background-color: var(--card);
 }
 
 /* ✅ تحسين العرض على الهواتف المحمولة */
@@ -635,227 +565,68 @@ header:hover{
         width: 90%;
     }
 }
-/* =========================
-   MOBILE FIX
-========================= */
 
-@media (max-width: 768px){
-
-    /* ================= HEADER ================= */
-
-    header{
-
-        padding: 15px 20px;
-
-        justify-content: center;
-    }
-
-    .logo{
-
-        font-size: 1.4em;
-    }
-
-    /* ================= CART ================= */
-
-    .cart-section{
-
-        padding: 110px 12px 30px;
-    }
-
-    .cart-content{
-
-        width: 100%;
-
-        padding: 18px;
-
-        border-radius: 22px;
-    }
-
-    /* ================= TABLE ================= */
-
-    .table-container{
-
-        overflow-x: auto;
-
-        border-radius: 18px;
-    }
-
-    table{
-
-        min-width: 650px;
-    }
-
-    th,
-    td{
-
-        padding: 14px 10px;
-
-        font-size: .95em;
-    }
-
-    td img{
-
-        width: 70px;
-
-        border-radius: 12px;
-    }
-
-    /* ================= TOTAL ================= */
-
-    #total-cost{
-
-        font-size: 1.15em;
-
-        line-height: 1.8;
-    }
-
-    /* ================= COUPON ================= */
-
-    .coupon-box{
-
+@media (max-width: 768px) {
+    header {
         flex-direction: column;
-
-        width: 100%;
-    }
-
-    .coupon-box input{
-
-        width: 100%;
-    }
-
-    #apply-coupon{
-
-        width: 100%;
-    }
-
-    /* ================= BUTTONS ================= */
-
-    .clear-cart,
-    .continue-shopping,
-    .home-page{
-
-        width: 100%;
-
-        justify-content: center;
-
-        margin-top: 12px;
-
-        padding: 15px;
-
-        border-radius: 16px;
-    }
-
-    /* ================= NOTE ================= */
-
-    .checkout-note{
-
-        margin: 25px 12px;
-
-        font-size: .95em;
-
-        line-height: 1.6;
-    }
-
-    /* ================= ORDER SECTION ================= */
-
-    .order-section{
-
-        margin: 20px 12px;
-
-        padding: 22px;
-
-        border-radius: 24px;
-    }
-
-    .order-section{
-
-    overflow: hidden;
-}
-
-    /* ================= FORM ================= */
-
-    .order-table,
-    .order-table tbody,
-    .order-table tr,
-    .order-table td{
-
-        display: block;
-
-        width: 100%;
-    }
-
-.order-table{
-
-    width: 100%;
-
-    table-layout: fixed;
-
-    border-collapse: separate;
-
-    border-spacing: 0 18px;
-}
-
-    .order-table tr{
-
-        margin-bottom: 18px;
-    }
-
-    .order-table td{
-
-        border: none;
-
-        padding: 6px 0;
-    }
-
-    .order-table td:first-child{
-
-    font-size: 1.1em;
-
-    font-weight: 700;
-
-    color: var(--accent);
-
-    width: 100%;
-
-    text-align: left;
-}
-
-    .order-table input,
-    .order-table textarea{
-
-        width: 100%;
-
-        font-size: 1em;
-
-        padding: 15px;
-    }
-
-    .order-table textarea{
-
-        min-height: 120px;
-    }
-
-    /* ================= SUBMIT ================= */
-
-    .submit-order{
-
-        width: 100%;
-
-        padding: 16px;
-
-        font-size: 1.05em;
-
-        border-radius: 18px;
-    }
-
-    /* ================= TITLES ================= */
-
-    .title{
-
-        font-size: 2em;
-
         text-align: center;
     }
+
+    .navigation ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .main {
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .main h2 span {
+        font-size: 2.5em;
+    }
+
+    .products .content {
+        gap: 15px;
+    }
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-container .images {
+    display: flex;
+    width: 300%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-container img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+/* إخفاء أزرار الـ radio */
+input[type="radio"] {
+    display: none;
+}
+
+/* تحريك الصور عند اختيار كل زر */
+#img1-1:checked ~ .images {
+    transform: translateX(0%);
+}
+
+#img1-2:checked ~ .images {
+    transform: translateX(-33.33%);
+}
+
+#img1-3:checked ~ .images {
+    transform: translateX(-66.66%);
 }
 
 /* تحسين تصميم أزرار التبديل بين الصور */
@@ -906,26 +677,7 @@ header:hover{
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.product,
-.bundle-card,
-.cart-content{
-    animation: fadeUp .6s ease;
-}
 
-@keyframes fadeUp{
-
-    from{
-        opacity: 0;
-        transform:
-        translateY(30px);
-    }
-
-    to{
-        opacity: 1;
-        transform:
-        translateY(0);
-    }
-}
 
 .cart-section {
     padding: 120px 20px;
@@ -937,40 +689,26 @@ header:hover{
     margin: 0 auto;
 }
 
-table{
+table {
     width: 100%;
-
     border-collapse: collapse;
-
-    overflow: hidden;
-
-    border-radius: 18px;
+    margin-top: 20px;
 }
 
-th{
-
-    background: #151515;
-
-    color: var(--accent);
-
-    font-size: 1.1em;
-
-    padding: 18px;
+.table-container {
+    width: 100%;
+    overflow-x: auto;
 }
 
-td{
-
-    background: #1a1a1a;
-
-    padding: 18px;
-
-    border-bottom:
-    1px solid rgba(255,255,255,.04);
+table, th, td {
+    border: 1px solid #ccc;
 }
 
-tr:hover td{
-    background: #202020;
+th, td {
+    padding: 10px;
+    text-align: center;
 }
+
 .clear-cart {
     margin-top: 20px;
     background-color: red;
@@ -1013,6 +751,8 @@ tr:hover td{
 .continue-shopping i {
     font-size: 20px;
 }
+
+
 
 /* =========================
    Coupon Section
@@ -1149,23 +889,6 @@ tr:hover td{
     }
 }
 
-.order-section{
-
-        width: calc(100% - 24px);
-
-        margin: 20px auto;
-    }
-
-    .order-table tr{
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 10px;
-    }
-
-
 .home-page {
     background: #666262;
     color: white;
@@ -1204,88 +927,9 @@ tr:hover td{
     text-align: center;
 }
 
-.order-section{
-
-    max-width: 900px;
-
-    margin: 60px auto;
-
-    padding: 40px;
-
-    background:
-    linear-gradient(
-    145deg,
-    #181818,
-    #111
-    );
-
-    border-radius: 28px;
-
-    border:
-    1px solid var(--glass);
-
-    box-shadow:
-    0 15px 40px rgba(0,0,0,.35);
-}
-
-.order-table{
-
-    width: 100%;
-
-    border-collapse: separate;
-
-    border-spacing: 0 18px;
-}
-
-.order-table td:first-child{
-
-    font-size: 1.2em;
-
-    font-weight: 700;
-
-    color: var(--accent);
-
-    width: 220px;
-
-    text-align: left;
-}
-
-.order-table input,
-.order-table textarea{
-
-    width: 100%;
-
-    padding: 16px 18px;
-
-    background: #141414;
-
-    color: white;
-
-    border:
-    1px solid rgba(255,255,255,.07);
-
-    border-radius: 16px;
-
-    font-size: 1.05em;
-
-    transition: .3s ease;
-}
-
-.order-table input:focus,
-.order-table textarea:focus{
-
-    border-color: var(--accent);
-
-    box-shadow:
-    0 0 0 4px rgba(201,166,87,.12);
-
-    transform: translateY(-1px);
-}
-
-input::placeholder,
-textarea::placeholder{
-
-    color: #777;
+.order-section {
+    padding: 80px 150px;
+    text-align: center;
 }
 
 
@@ -1297,48 +941,25 @@ textarea::placeholder{
     color: #302929;
 }
 
-.required{
-    color: #ff5a5a;
-    margin-left: 5px;
-}
 
 /* زر تأكيد الطلب - ستايل جديد */
-.submit-order{
-
-    width: 100%;
-
-    padding: 18px;
-
-    border: none;
-
-    border-radius: 18px;
-
-    background:
-    linear-gradient(
-    135deg,
-    var(--accent),
-    #e4c16f
-    );
-
-    color: #111;
-
-    font-size: 1.2em;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: .35s ease;
-
+.submit-order {
+    background-color: #666262 !important; /* لون أحمر جذاب */
+    color: white !important; /* لون النص */
+    font-size: 16px !important;
+    font-weight: bold !important;
+    padding: 12px 20px !important;
+    border: none !important;
+    border-radius: 8px !important; /* حواف دائرية */
+    cursor: pointer !important;
+    transition: all 0.3s ease-in-out !important;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2) !important;
     margin-top: 15px;
 }
-.submit-order:hover{
 
-    transform:
-    translateY(-3px);
-
-    box-shadow:
-    0 15px 30px rgba(201,166,87,.25);
+.submit-order:hover {
+    background-color: #302929 !important; /* لون أغمق عند التحويل */
+    transform: scale(1.1) !important; /* تكبير بسيط */
 }
 
 .submit-order:active {
@@ -1463,5 +1084,4 @@ body{
     transform: translateX(-50%); /* يتحرك نص المسافة عشان التكرار يملأ الفراغ */
   }
 }
-
 
