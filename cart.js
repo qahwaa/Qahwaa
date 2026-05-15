@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let subtotal = cart.reduce(
         (sum, item) =>
-            sum + (499 * Math.max(1, item.quantity)),
+            sum + (500 * Math.max(1, item.quantity)),
         0
     );
 
@@ -135,6 +135,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const altPhone = document.getElementById("alt-phone").value.trim();
         const address = document.getElementById("full-address").value.trim();
         const notes = document.getElementById("notes").value.trim();
+
+        if(fullName.length < 3){
+
+    alert("Please enter your full name");
+
+    return;
+}
+
+if(phoneNumber.length < 11){
+
+    alert("Enter a valid phone number");
+
+    return;
+
+}
 
         if (!name || !phone || !address) {
             alert("⚠️ الرجاء ملء جميع الحقول المطلوبة (الاسم، رقم الهاتف، العنوان).");

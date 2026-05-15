@@ -56,29 +56,47 @@
 
             <button class="clear-cart">Clear Cart</button>
             <button class="continue-shopping" onclick="window.location.href='pro.html'">🛍️ Continue Shopping</button>
-            <button class="home-page" onclick="window.location.href='index.html'">🏠 Home Page</button>
+            
         </div>
     </section>
     
+<div class="checkout-note">
+🚚 Please fill your details carefully to receive your order faster
+</div>
 
     <section class="order-section">
         <h2 class="title">📋 Enter Your Details</h2>
         <table class="order-table">
             <tr>
-                <td>Full Name:</td>
-                <td><input type="text" id="full-name"></td>
+                <td>
+    Full Name
+    <span class="required">*</span>
+</td>
+                <td><input 
+type="text"
+id="full-name"
+placeholder="Enter your full name"
+required></td>
             </tr>
             <tr>
                 <td>Phone Number:</td>
-                <td><input type="text" id="phone-number"></td>
+                <td><input 
+type="tel"
+id="phone-number"
+placeholder="01xxxxxxxxx"
+required></td>
             </tr>
             <tr>
                 <td>Alternate Phone:</td>
-                <td><input type="text" id="alt-phone"></td>
+                <td><input type="text" id="alt-phone" placeholder="Enter alternate phone number"></td>
             </tr>
             <tr>
                 <td>Full Address:</td>
-                <td><textarea id="full-address"></textarea></td>
+                <td><textarea
+id="full-address"
+placeholder="Enter your full address"
+required>
+</textarea></td>
             </tr>
             <tr>
                 <td>Notes:</td>
@@ -259,6 +277,22 @@ document.getElementById("apply-coupon")
                 alert("⚠️ الرجاء ملء جميع الحقول المطلوبة وإضافة منتج واحد على الأقل.");
                 return;
             }
+
+            if(fullName.length < 2){
+
+    alert("Please enter your full name");
+
+    return;
+}
+
+if(phoneNumber.length < 11){
+
+    alert("Enter a valid phone number ⚠️");
+
+    return;
+}
+
+
 
             const message = `📌 *طلب جديد* 🚀\n👤 *الاسم:* ${fullName}\n📞 *رقم الهاتف:* ${phoneNumber}\n📞 *هاتف إضافي:* ${altPhone}\n🏡 *العنوان:* ${fullAddress}\n📝 *ملاحظات:* ${notes}\n💰 *التكلفة النهائية:* ${costValue} LE\n🛍️ *المشتريات:*\n${cartItems.join("\n")}`;
 
