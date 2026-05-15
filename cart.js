@@ -18,10 +18,48 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // حساب التكلفة الإجمالية
-    function calculateTotal() {
-        let total = cart.reduce((sum, item) => sum + (450 * item.quantity), 80);
-        totalCostElement.textContent = total + " LE";
+   function calculateTotal() {
+
+    let subtotal = cart.reduce(
+        (sum, item) =>
+            sum + (499 * Math.max(1, item.quantity)),
+        0
+    );
+
+    let shipping = 80;
+
+    /* =========================
+       BUNDLE LOGIC (FIXED PRICE)
+    ========================= */
+
+    let hasBoxFit = cart.some(item => item.type === "boxfit");
+    let hasOversize = cart.some(item => item.type === "oversize");
+
+    let finalTotal = subtotal + shipping;
+
+    if (hasBoxFit && hasOversize) {
+        finalTotal = 950; // 🔥 FIXED BUNDLE PRICE
     }
+
+    totalCostElement.textContent =
+        finalTotal + " LE";
+
+    /* discount display (اختياري) */
+    let discountEl = document.getElementById("discount-value");
+
+    if (hasBoxFit && hasOversize) {
+        let normalTotal = subtotal + shipping;
+        let saved = normalTotal - 950;
+
+        if (discountEl) {
+            discountEl.textContent = saved + " LE";
+        }
+    } else {
+        if (discountEl) {
+            discountEl.textContent = "0 LE";
+        }
+    }
+}
 
     // عرض السلة
     function renderCart() {

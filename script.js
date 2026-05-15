@@ -20,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // إغلاق القائمة عند النقر خارجها
+    document.addEventListener("click", function (event) {
+        if (!nav.contains(event.target) && !hamburger.contains(event.target)) {
+            nav.classList.remove("active");
+        }
+    });
+
     
 
     // ========================== تحميل بيانات السلة من localStorage ==========================
@@ -27,53 +34,115 @@ document.addEventListener("DOMContentLoaded", function () {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
     addToCartButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            console.log("🚀 زر Add to Cart تم الضغط عليه!");
+    button.addEventListener("click", function () {
 
-            const product = this.closest(".product");
-            if (!product) {
-                console.error("❌ لم يتم العثور على العنصر الأب (product)!");
-                return;
-            }
+        const product = this.closest(".product");
+        if (!product) return;
 
-            const productName = product.querySelector("h3")?.innerText || "غير معروف";
-            const productImage = product.querySelector(".image-container img")?.src || "";
+        const productName = product.querySelector("h3")?.innerText || "";
+        const productImage = product.querySelector(".image-container img")?.src || "";
+
+         cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // ================= BUNDLE =================
+        if (productName.includes("Bundle")) {
+
+            const tshirtSize =
+                product.querySelector(".tshirt-size")?.value;
+
+            const boxSize =
+                product.querySelector(".box-size")?.value;
+
+            const boxColor =
+                product.querySelector(".box-color")?.value;
+
+            const boxDesign =
+                product.querySelector(".box-design")?.value;
+
+            cart.push({
+    name: "Oversized Bundle",
+    image: productImage,
+
+    size: `Oversize Tee: ${tshirtSize} | Box Tee: ${boxSize}`,
+
+    color: `Box Color: ${boxColor} | Design: ${boxDesign}`,
+
+    quantity: 1,
+    price: 950, // ← دي المهمة
+    type: "bundle"
+});
+
+        }
+
+        // ================= NORMAL PRODUCTS =================
+        else {
+
             const sizeSelect = product.querySelector("select[name='size']");
             const colorSelect = product.querySelector("select[name='color']");
+
             const productSize = sizeSelect ? sizeSelect.value : "Default";
             const productColor = colorSelect ? colorSelect.value : "Default";
 
-            console.log("🛒 إضافة المنتج: ", productName, productSize, productColor);
+            let productType = "oversize";
 
-            let existingItem = cart.find(item => item.name === productName && item.size === productSize && item.color === productColor);
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    name: productName,
-                    image: productImage,
-                    size: productSize,
-                    color: productColor,
-                    quantity: 1
-                });
+            if (
+                productName.toLowerCase().includes("box-fit") ||
+                productName.toLowerCase().includes("box fit")
+            ) {
+                productType = "boxfit";
             }
 
-            localStorage.setItem("cart", JSON.stringify(cart));
-            updateCartCount();
-            alert("✅ Order added to cart successfully!");
-        });
+            cart.push({
+                name: productName,
+                image: productImage,
+                size: productSize,
+                color: productColor,
+                quantity: 1,
+                price: 500, // السعر الثابت لكل منتج
+                type: productType
+            });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartCount();
+
+        alert("✅ Added to cart!");
     });
+});
 
     function updateCartCount() {
-        const cartCountElement = document.getElementById("cart-count");
-        if (cartCountElement) {
-            cartCountElement.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-        } else {
-            console.warn("⚠️ warning: cart-count element not found!");
-        }
-    }
+    const cartCountElement = document.getElementById("cart-count");
+    if (!cartCountElement) return;
 
-    updateCartCount();
+    cartCountElement.textContent = cart.reduce(
+        (sum, item) => sum + (Number(item.quantity) || 1),
+        0
+    );
+}
+
+window.addBundleToCart = function () {
+    const oversize = document.getElementById("bundle-oversize").value;
+    const boxfit = document.getElementById("bundle-boxfit").value;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+    name: "Oversized Bundle",
+    image: productImage,
+
+    size: `Oversize Tee: ${tshirtSize} | Box Tee: ${boxSize}`,
+
+    color: `Box Color: ${boxColor} | Design: ${boxDesign}`,
+
+    quantity: 1,
+    price: 950, // ← دي المهمة
+    type: "bundle"
+});
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("🔥 Bundle added successfully!");
+};
 
     // ========================== تحسين تبديل الصور ==========================
     function changeImage(button, direction) {

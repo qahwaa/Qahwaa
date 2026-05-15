@@ -188,6 +188,131 @@ header h3 {
     background: var(--accent);
     transform: scale(1.05);
 }
+
+/* ================= BUNDLE DESIGN ================= */
+
+.product-details{
+    margin-top: 30px;
+    background: linear-gradient(145deg,#151515,#1d1d1d);
+    border: 1px solid rgba(201,166,87,0.15);
+}
+
+/* العنوان */
+.product-details h2{
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+/* البراجرافات */
+.product-details p{
+    color: #d8d8d8;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* البوكس بتاع الاختيارات */
+.options{
+    margin-top: 25px;
+    gap: 18px;
+}
+
+/* كل اختيار */
+.option-group{
+    width: 100%;
+    max-width: 300px;
+    align-items: flex-start;
+}
+
+/* الليبل */
+.option-group label{
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+/* السليكت */
+.option-group select{
+    width: 100%;
+    background: #111;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 12px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* hover + focus */
+.option-group select:hover,
+.option-group select:focus{
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(201,166,87,0.2);
+}
+
+/* زرار الاضافة */
+.add-to-cart{
+    background: var(--accent);
+    color: black;
+    font-weight: bold;
+    border-radius: 14px;
+    margin-top: 25px;
+}
+
+.add-to-cart:hover{
+    background: #d9b96d;
+}
+
+/* زرار الكارت */
+.go-to-cart{
+    background: #222;
+    border: 1px solid #333;
+}
+
+/* زرار الرجوع */
+.back-button{
+    background: #181818;
+    border: 1px solid #333;
+}
+
+/* الصورة */
+.slider img{
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* السلايدر */
+.slider{
+    margin-top: 25px;
+}
+
+/* شريط الخصم */
+.discount-tag{
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 14px;
+}
+
+/* موبايل */
+@media (max-width:768px){
+
+    .product-details{
+        width: 92%;
+        padding: 20px 15px;
+    }
+
+    .product-details h2{
+        font-size: 22px;
+    }
+
+    .option-group{
+        max-width: 100%;
+    }
+}
+
+
 /* ✅ تحسين التجاوب مع الأجهزة الصغيرة */
 @media (max-width: 480px) {
     .product-details {

@@ -69,6 +69,50 @@ header {
     transform: scale(1.05);
 }
 
+.bundle-card{
+    background: linear-gradient(145deg, #151515, #1c1c1c);
+    border: 1px solid rgba(201,166,87,0.2);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 30px auto;
+    max-width: 500px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.bundle-card h2{
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.bundle-card select{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: #111;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 10px;
+}
+
+.bundle-price{
+    margin-top: 15px;
+    font-size: 1.5em;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.bundle-btn{
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 .sale-badge {
     position: center;
@@ -138,6 +182,82 @@ button {
 
 button:hover {
     background: #8b6719;
+}
+
+/* ================= BUNDLE PRODUCT ================= */
+
+.bundle-mini{
+    margin-top: 15px;
+    text-align: right;
+}
+
+.bundle-mini p{
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.bundle-mini label{
+    display: block;
+    margin: 10px 0 5px;
+    color: white;
+    font-size: 14px;
+}
+
+.bundle-mini select{
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #111;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.bundle-mini select:focus{
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(201,166,87,0.3);
+}
+
+.bundle-btn{
+    margin-top: 18px;
+    background: var(--accent);
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.bundle-btn:hover{
+    background: #e0bb69;
+    transform: scale(1.03);
+}
+
+.product[data-fit="bundle"]{
+    border: 1px solid rgba(201,166,87,0.25);
+    box-shadow: 0 0 20px rgba(201,166,87,0.15);
+}
+
+/* تحسين شكل السعر */
+
+.product p{
+    line-height: 1.8;
+}
+
+/* تحسين الموبايل */
+
+@media (max-width: 768px){
+
+    .bundle-mini select{
+        font-size: 14px;
+    }
+
+    .bundle-btn{
+        padding: 12px;
+    }
+
 }
 
 /* تحسين التوافق مع الأجهزة الصغيرة */

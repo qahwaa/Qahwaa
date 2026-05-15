@@ -1,5 +1,3 @@
-<!--
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
@@ -18,56 +16,74 @@
         
         <div class="slider">
             <button class="prev" onclick="prevSlide()">&#10094;</button>
-            <img id="productImage" src="img/ff22.jpg" alt="Dive In space">
+            <img id="productImage" src="img/bund.png" alt="Dive In space">
             <button class="next" onclick="nextSlide()">&#10095;</button>
         </div>
 
         
         <h2>Product Details</h2>
-        <p>Dive In space T-shirt made of high-quality materials and very comfortable</p>
+        <p>Bundle containing 2 T-shirts (box-fit and oversized) made of high-quality materials and very comfortable</p>
         <p>model wearing black T-shirt hight 183cm and weight 68kg ,wear Medium size</p>
-        <p>Price: 450 L.E</p>
-        <span class="discount-tag">10% OFF</span>
+        <p>Price: 950 L.E</p>
+        <span class="discount-tag">25% OFF</span>
 
         <div class="options">
             
-            <div class="option-group">
-                <label for="size">Size:</label>
-                <select id="size">
-                    
-                    <option>S</option>
-                    <option>M</option>
-                    <option>L</option>
-                    <option>XL</option>
-                  
-                </select>
-            </div>
-        
-           
-            <div class="option-group">
-                <label for="color">Color:</label>
-                <select id="color">
-                    <option>White</option>
-                    <option>Black</option>
-                    <option>Grey</option>
-                </select>
-            </div>
-        
-            
-            <div class="option-group">
-                <label for="quantity">Quantity:</label>
-                <select id="quantity">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </div>
+            <div class="options">
+
+    <!-- Oversize Design -->
+    <div class="option-group">
+        <label>Oversize Design:</label>
+
+        <select id="oversize-design">
+            <option>ZAZA BASHA</option>
+            <option>هنا القاهرة</option>
+        </select>
+    </div>
+
+    <!-- Oversize Size -->
+    <div class="option-group">
+        <label>Oversize Size:</label>
+
+        <select id="oversize-size">
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+        </select>
+    </div>
+
+    <!-- Box Fit Color -->
+    <div class="option-group">
+        <label>Box-Fit Color:</label>
+
+        <select id="box-color">
+            <option>White</option>
+            <option>Black</option>
+        </select>
+    </div>
+
+    <!-- Box Fit Size -->
+    <div class="option-group">
+        <label>Box-Fit Size:</label>
+
+        <select id="box-size">
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+        </select>
+    </div>
+
+    
+   
+
+</div>
         
        
-        <button class="add-to-cart" onclick="addToCart()">Add to Cart ➕</button>
+        <button class="add-to-cart" onclick="addBundleToCart()">
+    Add Bundle To Cart
+</button>
 
        
         <a href="cart.html" class="go-to-cart">Cart 🛒</a>
@@ -78,46 +94,51 @@
         <a href="pro.html" class="back-button">Continue Shopping 🤳🏻</a>
     </div>
 
-    <script>
-        let images = ["img/ff22.jpg", "img/ffb.jpg", "img/basic2.jpg"];
-        let index = 0;
+   <script>
 
-        function nextSlide() {
-            index = (index + 1) % images.length;
-            document.getElementById("productImage").src = images[index];
-        }
+function addBundleToCart() {
 
-        function prevSlide() {
-            index = (index - 1 + images.length) % images.length;
-            document.getElementById("productImage").src = images[index];
-        }
+    const oversizeDesign =
+        document.getElementById("oversize-design").value;
 
-        function addToCart() {
-            let size = document.getElementById("size").value;
-            let color = document.getElementById("color").value;
-            let quantity = document.getElementById("quantity").value;
+    const oversizeSize =
+        document.getElementById("oversize-size").value;
 
-            let product = {
-                name: "Dive In space",
-                price: 450,
-                size: size,
-                color: color,
-                quantity: quantity,
-                image: images[0] // أول صورة كصورة المنتج الرئيسية
-            };
+    const boxColor =
+        document.getElementById("box-color").value;
 
-            // جلب المنتجات من localStorage
-            let cart = localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : [];
+    const boxSize =
+        document.getElementById("box-size").value;
 
-            // إضافة المنتج الجديد
-            cart.push(product);
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
-            // حفظ البيانات في localStorage
-            localStorage.setItem("cart", JSON.stringify(cart));
+    cart.push({
 
-            alert("✅ تمت إضافة المنتج إلى السلة!");
-        }
-    </script>
+        name: "Oversized Bundle",
+
+        image: document.getElementById("productImage").src,
+
+        size:
+`Oversize Size: ${oversizeSize} | Box Size: ${boxSize}`,
+
+        color:
+`Design: ${oversizeDesign} | Box Color: ${boxColor}`,
+
+        quantity: 1,
+
+        price: 950,
+
+        type: "bundle"
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("✅ Bundle Added!");
+
+    window.location.href = "cart.html";
+}
+
+</script>
 </body>
 </html>
--->

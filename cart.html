@@ -99,36 +99,44 @@
 
             let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            const coupons = {
-    QAHWAA10: 10,
-    happyeid: 15,
-    COFFEE20: 20
+           const coupons = {
+    QAHWAA10: { type: "percent", value: 10 },
+    HP50: { type: "fixed", value: 50 },
+    COFFEE20: { type: "percent", value: 20 }
 };
 
 let discountPercent = 0;
+let fixedDiscount = 0;
 
             function calculateTotal() {
 
-    let subtotal = cart.reduce(
-        (sum, item) =>
-            sum + (500 * Math.max(1, item.quantity)),
-        0
-    );
+    let subtotal = cart.reduce((sum, item) => {
+    return sum + (Number(item.price) || 0) * (Number(item.quantity) || 1);
+}, 0);
 
     let shipping = 80;
 
-    let discountAmount =
+    let percentDiscountAmount =
         subtotal * (discountPercent / 100);
 
+    let totalDiscount =
+    Number(percentDiscountAmount) + Number(fixedDiscount);
+
     let finalTotal =
-        subtotal + shipping - discountAmount;
+    Number(subtotal) + Number(shipping) - Number(totalDiscount);
+
+    if (finalTotal < 0) {
+        finalTotal = 0;
+    }
 
     totalCostElement.textContent =
-        finalTotal + " LE";
+        finalTotal + " ";
 
     document.getElementById("discount-value")
-        .textContent = discountAmount + " LE";
+        .textContent = totalDiscount + " ";
 }
+
+    
 
             function renderCart() {
                 cartItemsContainer.innerHTML = "";
@@ -201,16 +209,27 @@ document.getElementById("apply-coupon")
     const message =
         document.getElementById("coupon-message");
 
+    discountPercent = 0;
+    fixedDiscount = 0;
+
     if (coupons[code]) {
 
-        discountPercent = coupons[code];
+        if (coupons[code].type === "percent") {
 
-        message.innerText =
-            `✅ Coupon Applied (${discountPercent}% OFF)`;
+            discountPercent = coupons[code].value;
+
+            message.innerText =
+                `✅ Coupon Applied (${discountPercent}% OFF)`;
+
+        } else if (coupons[code].type === "fixed") {
+
+            fixedDiscount = coupons[code].value;
+
+            message.innerText =
+                `✅ Coupon Applied (${fixedDiscount} LE OFF)`;
+        }
 
     } else {
-
-        discountPercent = 0;
 
         message.innerText =
             "❌ Invalid Coupon Code";
@@ -218,8 +237,6 @@ document.getElementById("apply-coupon")
 
     calculateTotal();
 });
-
-        });
 
         document.getElementById("submit-order").addEventListener("click", function () {
             const fullName = document.getElementById("full-name").value.trim();
@@ -271,6 +288,7 @@ document.getElementById("apply-coupon")
                 console.error("Error:", error);
                 alert("❌An error occurred while sending the order. Please try again.");
             });
+        });
         });
     </script>
 </body>
