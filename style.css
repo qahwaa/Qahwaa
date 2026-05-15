@@ -635,96 +635,227 @@ header:hover{
         width: 90%;
     }
 }
+/* =========================
+   MOBILE FIX
+========================= */
 
-@media (max-width: 768px) {
-    header {
+@media (max-width: 768px){
+
+    /* ================= HEADER ================= */
+
+    header{
+
+        padding: 15px 20px;
+
+        justify-content: center;
+    }
+
+    .logo{
+
+        font-size: 1.4em;
+    }
+
+    /* ================= CART ================= */
+
+    .cart-section{
+
+        padding: 110px 12px 30px;
+    }
+
+    .cart-content{
+
+        width: 100%;
+
+        padding: 18px;
+
+        border-radius: 22px;
+    }
+
+    /* ================= TABLE ================= */
+
+    .table-container{
+
+        overflow-x: auto;
+
+        border-radius: 18px;
+    }
+
+    table{
+
+        min-width: 650px;
+    }
+
+    th,
+    td{
+
+        padding: 14px 10px;
+
+        font-size: .95em;
+    }
+
+    td img{
+
+        width: 70px;
+
+        border-radius: 12px;
+    }
+
+    /* ================= TOTAL ================= */
+
+    #total-cost{
+
+        font-size: 1.15em;
+
+        line-height: 1.8;
+    }
+
+    /* ================= COUPON ================= */
+
+    .coupon-box{
+
         flex-direction: column;
-        text-align: center;
+
+        width: 100%;
     }
 
-    .navigation ul {
-        flex-direction: column;
-        gap: 10px;
+    .coupon-box input{
+
+        width: 100%;
     }
 
-    .main {
-        padding: 50px 30px;
-        text-align: center;
+    #apply-coupon{
+
+        width: 100%;
     }
 
-    .main h2 span {
-        font-size: 2.5em;
+    /* ================= BUTTONS ================= */
+
+    .clear-cart,
+    .continue-shopping,
+    .home-page{
+
+        width: 100%;
+
+        justify-content: center;
+
+        margin-top: 12px;
+
+        padding: 15px;
+
+        border-radius: 16px;
     }
 
-    .products .content {
-        gap: 15px;
-    }
-}
+    /* ================= NOTE ================= */
 
-.image-container {
-    position: relative;
-    width: 100%;
-    height: 280px;
+    .checkout-note{
+
+        margin: 25px 12px;
+
+        font-size: .95em;
+
+        line-height: 1.6;
+    }
+
+    /* ================= ORDER SECTION ================= */
+
+    .order-section{
+
+        margin: 20px 12px;
+
+        padding: 22px;
+
+        border-radius: 24px;
+    }
+
+    .order-section{
+
     overflow: hidden;
-    border-radius: 10px;
 }
 
-.image-container .images {
-    display: flex;
-    width: 300%;
-    transition: transform 0.5s ease-in-out;
-}
+    /* ================= FORM ================= */
 
-.image-container img {
+    .order-table,
+    .order-table tbody,
+    .order-table tr,
+    .order-table td{
+
+        display: block;
+
+        width: 100%;
+    }
+
+.order-table{
+
     width: 100%;
-    height: 280px;
-    object-fit: cover;
+
+    table-layout: fixed;
+
+    border-collapse: separate;
+
+    border-spacing: 0 18px;
 }
 
-/* إخفاء أزرار الـ radio */
-input[type="radio"] {
-    display: none;
+    .order-table tr{
+
+        margin-bottom: 18px;
+    }
+
+    .order-table td{
+
+        border: none;
+
+        padding: 6px 0;
+    }
+
+    .order-table td:first-child{
+
+    font-size: 1.1em;
+
+    font-weight: 700;
+
+    color: var(--accent);
+
+    width: 100%;
+
+    text-align: left;
 }
 
-/* تحريك الصور عند اختيار كل زر */
-#img1-1:checked ~ .images {
-    transform: translateX(0%);
-}
+    .order-table input,
+    .order-table textarea{
 
-#img1-2:checked ~ .images {
-    transform: translateX(-33.33%);
-}
+        width: 100%;
 
-#img1-3:checked ~ .images {
-    transform: translateX(-66.66%);
-}
+        font-size: 1em;
 
-input,
-textarea,
-select{
+        padding: 15px;
+    }
 
-    background: #141414;
+    .order-table textarea{
 
-    color: white;
+        min-height: 120px;
+    }
 
-    border:
-    1px solid rgba(255,255,255,.07);
+    /* ================= SUBMIT ================= */
 
-    border-radius: 14px;
+    .submit-order{
 
-    padding: 14px;
+        width: 100%;
 
-    transition: .3s ease;
-}
+        padding: 16px;
 
-input:focus,
-textarea:focus,
-select:focus{
+        font-size: 1.05em;
 
-    border-color: var(--accent);
+        border-radius: 18px;
+    }
 
-    box-shadow:
-    0 0 0 4px rgba(201,166,87,.12);
+    /* ================= TITLES ================= */
+
+    .title{
+
+        font-size: 2em;
+
+        text-align: center;
+    }
 }
 
 /* تحسين تصميم أزرار التبديل بين الصور */
@@ -1017,6 +1148,23 @@ tr:hover td{
         max-width: 320px;
     }
 }
+
+.order-section{
+
+        width: calc(100% - 24px);
+
+        margin: 20px auto;
+    }
+
+    .order-table tr{
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
 
 .home-page {
     background: #666262;
